@@ -36,7 +36,7 @@ const isMagicSquare = (mat) => {
 
 const mtx = [[2, 7, 6], [9, 5, 1], [4, 3, 8]]
 
-console.log(isMagicSquare(mtx))
+// console.log(isMagicSquare(mtx))
 
 // create all combinations for different row / col ranges
 const generateAllCombinations = (val) => {
@@ -46,8 +46,11 @@ const generateAllCombinations = (val) => {
             combinations.push([startIndex, endIndex]);
         }
     }
-    return combinations;
+    // return combinations;
+    console.log(combinations)
 }
+
+console.log(generateAllCombinations(mtx))
 
 // create sub-matrix with row/col range
 const generateSubMatrix = (
@@ -67,6 +70,8 @@ const generateSubMatrix = (
     }
     return subMat;
 }
+
+// console.log(generateSubMatrix(mtx))
 
 // generate all sub-matrices:
 const generateSubMatrices = (mat) => {
@@ -94,6 +99,8 @@ const generateSubMatrices = (mat) => {
     }
     return subMatrices;
 }
+
+// console.log(generateSubMatrices(mtx))
 
 const mat = [[2, 7, 6], [9, 5, 1], [4, 3, 8]];
 
