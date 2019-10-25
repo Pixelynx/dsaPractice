@@ -5,30 +5,48 @@ const escapeCharacter = (str, escCount = 0) => {
     let validChars = /^[A-Za-z!#]+$/;
 
     for (let i = 0; i < str.length; i++) {
-        if (str[i] === '#') result += str[i]; hashCount++;
-        console.log('IF # FOUND;', result, hashCount, bangB4Lett)
-        console.log('_________')
-        if (hashCount > 0) result += str[i];
-        console.log('IF HASHCOUNT > 0;', result, hashCount, bangB4Lett)
-        console.log('_________')
-        if (str[i] === '!' && str[i + 1].match(validChars)) {
-            bangB4Lett = true;
-            console.log('IF ! AND LETTER AFTER;', result, hashCount, bangB4Lett)
-            console.log('_________')
+        // IF THE RESULT HAS A LENGTH; I.E. CONTAINS A HASH
+        if (result.length) {
+            console.log('if result length', result.length)
+            // IF THE CURRENT STR IDX IS A HASH
+            // ADD STR[I] TO RESULT; INCREMENT HASH COUNT
+            if (str[i] === '#') {
+                result += str[i]; hashCount++;
+                // console.log('IF RESULT LENGTH && #:');
+                // console.log('RESULT: ', result);
+                // console.log('HASH COUNT: ', hashCount);
+                // console.log('BANG B4 LETTER: ', bangB4Lett);
+                // console.log('_________');
+            }
+            // IF STR AT CURR IDX IS BAND AND NEXT CHAR IS LETTER
+            if (str[i] === '!' && str[i + 1].match(validChars)) {
+                bangB4Lett = true;
+            }
+            result += str[i]
         } else {
-            // BLEH
+            console.log('else result length', result.length)
+            // IF NO RESULT LENGTH AND CURR STR IDX IS HASH
+            if (str[i] === '#') {
+                result += str[i]; hashCount++;
+            }
+
         }
 
-        if (hashCount === 2 && bangB4Lett === false) hashCount = 0;
-        if (hashCount === 2 && bangB4Lett === true) {
-            escCount++; hashCount = 0; bangB4Lett = false; result = "";
+        // IF HASHES HAVE CLOSED BUT NO BANGB4LETT SEEN; RESET
+        if (hashCount === 2 && bangB4Lett === false) {
+            result = ""; hashCount = 0;
+        } else {
+            // IF HASHES HAVE CLOSED BUT AND BANGB4LETT SEEN; ADD TO ESC CHAR COUNT AND RESET
+            if (hashCount === 2 && bangB4Lett === true) {
+                escCount++; result = ""; hashCount = 0;
+            }
         }
     }
 
     return escCount;
 }
 
-escapeCharacter("##ab!c#de!f");
+escapeCharacter("#ab!c#de!f");
 
 // let validChars1 =  /^[A-Za-z!#]+$/;
 // let result1 = '';
