@@ -7,7 +7,6 @@ const escapeCharacter = (str, escCount = 0) => {
     for (let i = 0; i < str.length; i++) {
         // IF THE RESULT HAS A LENGTH; I.E. CONTAINS A HASH
         if (result.length) {
-            console.log('if result length', result.length)
             // IF THE CURRENT STR IDX IS A HASH
             // ADD STR[I] TO RESULT; INCREMENT HASH COUNT
             if (str[i] === '#') {
@@ -24,7 +23,6 @@ const escapeCharacter = (str, escCount = 0) => {
             }
             result += str[i]
         } else {
-            console.log('else result length', result.length)
             // IF NO RESULT LENGTH AND CURR STR IDX IS HASH
             if (str[i] === '#') {
                 result += str[i]; hashCount++;
