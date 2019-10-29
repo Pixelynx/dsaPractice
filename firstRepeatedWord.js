@@ -3,8 +3,7 @@ const firstRepeatedWord = (str) => {
     let obj = {};
 
     for (let i = 0; i < str.length; i++) {
-        if (!obj[str[i]]) obj[str[i]] = 1;
-        else obj[str[i]]++
+        !obj[str[i]] ? obj[str[i]] = 1 : obj[str[i]]++
 
         if (obj[str[i]] === 2) return str[i];
     }
