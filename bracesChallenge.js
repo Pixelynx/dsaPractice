@@ -22,6 +22,7 @@
 
 // console.log(isMatchingBrace(['()()']))
 
+// multiple strings in an arr
 const isMatchingBrace = (arr) => {
     let result = [];
     let braces = {
