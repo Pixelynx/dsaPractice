@@ -1,7 +1,7 @@
 var isValid = function (s) {
     let basicStack = [];
     let braces = {
-        '{': '}',
+        '{': '}', 
         '[': ']',
         '(': ')'
     }
@@ -15,7 +15,7 @@ var isValid = function (s) {
             if (el === braces[top]) {
                 basicStack.pop()
             } else {
-                return false
+                return false;
             }
         }
     }
