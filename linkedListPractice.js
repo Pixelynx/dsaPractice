@@ -24,6 +24,17 @@ class LinkedList {
         }
     }
 
+    removeNode() {
+        if(this.head === null) return null;
+        else {
+            let current = this.head;
+            while(current) {
+                current = current.next;
+            }
+            // current.next 
+        }
+    }
+
     printList() {
         let current = this.head;
         console.log(current)
