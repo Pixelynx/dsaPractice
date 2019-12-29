@@ -31,15 +31,15 @@ const convertToMins = (timeArr) => {
     return mins = (mins1 - mins2) + 60 * (hours1 - hours2);
 };
 
-const sortDays = {
-    "Mon": 1,
-    "Tue": 2,
-    "Wed": 3,
-    "Thu": 4,
-    "Fri": 5,
-    "Sat": 6,
-    "Sun": 7
-};
+// const sortDays = {
+//     "Mon": 1,
+//     "Tue": 2,
+//     "Wed": 3,
+//     "Thu": 4,
+//     "Fri": 5,
+//     "Sat": 6,
+//     "Sun": 7
+// };
 
 function solution(S) {
     let daysOfWeek = new Set(["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]);
