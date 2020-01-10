@@ -42,6 +42,7 @@ class LinkedList {
         }
     }
 
+    // RECURSIVE REVERSE ATTEMPT
     reverseNode(node, prev) {
         let newNode = new Node(node.value, prev);
         if (node.next) {
@@ -50,19 +51,26 @@ class LinkedList {
     }
 
     reverseList() {
-        // keep track of the current node
-        // keep track of when end of list is reached
-        // assign this.head to last node
+        if(this.head === null) return;
 
-        // if(this.head === null) return null;
-        // if(this.head.next === null) return;
-        return this.reverseNode(this.head, null);
+        let current = this.head;
+        let prev = null;
+        let temp;
 
+        while(current) {
+            temp = current.next;
+            current.next = prev;
+            prev = current;
+            current = temp;
+
+            this.head = prev;
+        }
     }
 
     printList() {
         let current = this.head;
         let str = "";
+        if(current === null) str = "Empty List"
         while (current) {
             str += current.value + " => ";
             current = current.next;
@@ -77,5 +85,5 @@ list.addNode(56);
 list.addNode(23);
 list.addNode(3);
 // list.removeNode();
-list.reverseList()
-list.printList()
+list.reverseList(list)
+console.log(list.printList())
