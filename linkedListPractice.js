@@ -58,11 +58,16 @@ class LinkedList {
         let temp;
 
         while(current) {
+            // save next value to temporary variable before changing
             temp = current.next;
+            // set new next value as current previous' value
             current.next = prev;
+            // set new previous value as current value
             prev = current;
+            // set new current value as current temporary value
             current = temp;
 
+            // redefine head as previous value
             this.head = prev;
         }
     }
