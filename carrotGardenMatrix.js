@@ -19,7 +19,6 @@ for (let i = 0; i <= mtx.length; i++) {
         for (let j = 0; j <= midIdx.length; j++) {
 
         }
-
     }
     console.log(highestNum)
 }
