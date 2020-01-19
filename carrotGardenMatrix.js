@@ -16,11 +16,18 @@ for (let i = 0; i <= mtx.length; i++) {
     if (mtx % 2) {
         midIdx = mtx[mid]
     } else {
+        // IF MATRIX HAS ODD NUMBER OF ROWS
         midIdx = [mtx[mid - 1], mtx[mid]]
         // console.log(midIdx)
+        // LOOP TWO MIDDLE ROWS
         for (let j = 0; j < midIdx.length; j++) {
             let currentMid = midIdx[j]
-             console.log(currentMid[Math.floor(currentMid.length/2)])
+            //  console.log(currentMid[Math.floor(currentMid.length/2)])
+            let highestMid = currentMid[Math.floor(currentMid.length / 2)]
+            if (currentMid[Math.floor(currentMid.length / 2)] > highestMid) {
+                
+            }
+            console.log(highestMid)
             
         }
     }
