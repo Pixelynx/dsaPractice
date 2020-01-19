@@ -17,19 +17,19 @@ for (let i = 0; i <= mtx.length; i++) {
         midIdx = mtx[mid]
     } else {
         // IF MATRIX HAS ODD NUMBER OF ROWS
+        let currentHigh = 0;
         midIdx = [mtx[mid - 1], mtx[mid]]
         // console.log(midIdx)
         // LOOP TWO MIDDLE ROWS
         for (let j = 0; j < midIdx.length; j++) {
             let currentMid = midIdx[j]
-            //  console.log(currentMid[Math.floor(currentMid.length/2)])
-            let highestMid = currentMid[Math.floor(currentMid.length / 2)]
-            if (currentMid[Math.floor(currentMid.length / 2)] > highestMid) {
-                
+            if (currentMid[Math.floor(currentMid.length / 2)] > currentHigh) {
+                currentHigh = currentMid[Math.floor(currentMid.length / 2)]
             }
-            console.log(highestMid)
+            
             
         }
+        console.log(currentHigh)
     }
     // console.log(highestNum)
 }
