@@ -26,8 +26,6 @@ for (let i = 0; i <= mtx.length; i++) {
             if (currentMid[Math.floor(currentMid.length / 2)] > currentHigh) {
                 currentHigh = currentMid[Math.floor(currentMid.length / 2)]
             }
-            
-            
         }
         console.log(currentHigh)
     }
