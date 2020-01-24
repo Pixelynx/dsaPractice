@@ -29,5 +29,5 @@ for (let i = 0; i <= mtx.length; i++) {
         }
         console.log(currentHigh)
     }
-    // console.log(highestNum)
+    console.log(highestNum)
 }
