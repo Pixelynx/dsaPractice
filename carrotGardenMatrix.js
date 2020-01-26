@@ -23,11 +23,16 @@ for (let i = 0; i <= mtx.length; i++) {
         // LOOP TWO MIDDLE ROWS
         for (let j = 0; j < midIdx.length; j++) {
             let currentMid = midIdx[j]
+            let currentMidNumIdx;
             if (currentMid[Math.floor(currentMid.length / 2)] > currentHigh) {
                 currentHigh = currentMid[Math.floor(currentMid.length / 2)]
+                currentMidNumIdx = Math.floor(currentMid.length / 2);
+                if(currentMid > currentMid+1 && currentMid > currentMid-1) {
+                    console.log('current middle is greatest')
+                } else console.log("there's a larger num than current mid")
             }
         }
         console.log(currentHigh)
     }
-    console.log(highestNum)
+    // console.log(highestNum)
 }
