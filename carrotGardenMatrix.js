@@ -30,6 +30,7 @@ for (let i = 0; i <= mtx.length; i++) {
                 if(currentMid > currentMid+1 && currentMid > currentMid-1) {
                     console.log('current middle is greatest')
                 } else console.log("there's a larger num than current mid")
+                
             }
         }
         console.log(currentHigh)
