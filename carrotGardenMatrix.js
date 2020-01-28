@@ -9,6 +9,7 @@ let mid = Math.floor(mtx.length / 2)
 let count = 0;
 
 for (let i = 0; i <= mtx.length; i++) {
+    // CREATE VARIABLE FOR NUMBER OF CARROTS EATEN
     // CREATE LOOP
     // CREATE VARIABLE FOR TOP => [ROW-1][COL]
     // CREATE VARIABLE FOR LEFT => [ROW][COL-1]
@@ -18,6 +19,8 @@ for (let i = 0; i <= mtx.length; i++) {
     // GRAB MIDDLE INDEX OF ARRAY
     // IF EVEN NUMBER OF ROWS, CHECK IF LEFT, RIGHT, OR BOTTOM ARE GREATER
         // IF TRUE -- GRAB INDEX OF GREATEST NUMBER
-        // 
+    // CHECK TOP, LEFT, RIGHT AND BOTTOM OF INDEXED NUMBER FOR LARGEST NUMBER OVER 0
+        // IF NO NUMBER OVER 0 EXISTS, RETURN NUMBER OF CARROTS EATEN 
+        
 
 }
