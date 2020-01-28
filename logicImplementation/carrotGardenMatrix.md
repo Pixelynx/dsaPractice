@@ -1,1 +1,1 @@
-<img src="./carrotGardenMatrix.jpg" width="80%">
+<img src="./carrotGardenMatrix.jpg" width="100%">
