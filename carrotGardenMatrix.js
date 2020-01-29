@@ -139,10 +139,14 @@ const carrotGarden = (mtx) => {
             let highestValIdx;
 
             row = currentSquare[0], col = currentSquare[1];
-            let topIdx = [row - 1, col], topVal = mtx[topIdx[0]][[topIdx[1]]];;
-            let bottomIdx = [row + 1, col], bottomVal = mtx[bottomIdx[0]][[bottomIdx[1]]];
-            leftIdx = [row, col - 1], rightIdx = [row, col + 1];
-            let leftVal = mtx[leftIdx[0]][[leftIdx[1]]], rightVal = mtx[rightIdx[0]][[rightIdx[1]]];
+            let topIdx = [row - 1, col];
+            let topVal = mtx[topIdx[0]][[topIdx[1]]];;
+            let bottomIdx = [row + 1, col]; 
+            let bottomVal = mtx[bottomIdx[0]][[bottomIdx[1]]];
+            leftIdx = [row, col - 1], 
+            rightIdx = [row, col + 1];
+            let leftVal = mtx[leftIdx[0]][[leftIdx[1]]]; 
+            letrightVal = mtx[rightIdx[0]][[rightIdx[1]]];
 
             if ((topVal) && topVal > mostCarrots) { mostCarrots = topVal; highestValIdx = topIdx; console.log('top val', topVal)}
             if ((leftVal) && leftVal > mostCarrots) { mostCarrots = leftVal; highestValIdx = leftIdx; }
