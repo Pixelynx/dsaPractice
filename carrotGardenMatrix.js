@@ -23,44 +23,70 @@ const carrotGarden = (mtx) => {
         // IF NO NUMBER OVER 0 EXISTS, RETURN NUMBER OF CARROTS EATEN 
 
     let carrotsEaten = 0;
-    let mid = Math.floor(mtx.length / 2)
+    let mid = Math.floor(mtx.length / 2);
     
     for(let row = 0; row <= mtx.length; row++) {
-        let currentMidSquares = [];
         let currentIdx = [];
+        let currentMidSquares = [];
         
         // IF MATRIX HAS EVEN NUMBER OF ROWS, PUSH TWO MIDDLE ARRAYS
         if(!(mid%2)) {
-            currentMidSquares.push(mtx[mid - 1], mtx[mid]) // => currentMidSquares = [[0, 0, 7, 0, 4], [4, 6, 3, 4, 9]]
+            currentMidSquares.push(mtx[mid - 1], mtx[mid]); // => currentMidSquares = [[0, 0, 7, 0, 4], [4, 6, 3, 4, 9]]
             // currrentMidSquares ZEROTH INDEX[0, 0], FIRST INDEX[0, 1] index values => [[1, 2], [2, 2]]
 
             // IF MIDDLE INDEX OF FIRST MIDDLE ARRAY IS GREATER THAN THE MIDDLE INDEX OF SECOND MIDDLE ARRAY, REDEFINE "CURRENT" WITH ZEROTH INDEX VALUE OF THE CURRENT MIDDLE SQUARES' INDEX => 1; 
             // ELSE IF MIDDLE INDEX OF SECOND MIDDLE ARRAY IS GREATER THAN THE MIDDLE INDEX OF THE FIRST MIDDLE ARRAY, REDEFINE "CURRENT" WITH FIRST INDEX VALUE OF THE CURRENT MIDDLE SQUARES' INDEX => 2
-            currentIdx = currentMidSquares[0][mid] > currentMidSquares[[1][mid]] ? [0, [mid]] : [1, mid]
+            currentIdx = currentMidSquares[0][mid] > currentMidSquares[[1][mid]] ? [0, [mid]] : [1, mid];
 
             // DEFINE VARIABLES FOR LEFT AND RIGHT OF CURRENT VALUES; FOR READABILITY
-            let left = [currentIdx[0], currentIdx[1] - 1];
-            let right = [currentIdx[0], currentIdx[1] + 1];
+            let leftIdx = [currentIdx[0], currentIdx[1] - 1];
+            let rightIdx = [currentIdx[0], currentIdx[1] + 1];
 
-            // CHECK IF LEFT OR RIGHT ELEMENTS OF CURRENT INDEX HAVE A GREATER ELEMENT VALUE
-            if (mtx[left[0]][left[1]] > mtx[currentIdx[0][currentIdx[1]]]) currentIdx = [left[0]][left[1]];
-            if (mtx[right[0]][right[1]] > mtx[currentIdx[0][currentIdx[1]]]) currentIdx = [right[0]][right[1]];
+            // CHECK IF LEFT OR rightIdx ELEMENTS OF CURRENT INDEX HAVE A GREATER ELEMENT VALUE
+            if (mtx[leftIdx[0]][leftIdx[1]] > mtx[currentIdx[0][currentIdx[1]]]) currentIdx = [leftIdx[0]][leftIdx[1]];
+            if (mtx[rightIdx[0]][rightIdx[1]] > mtx[currentIdx[0][currentIdx[1]]]) currentIdx = [rightIdx[0]][rightIdx[1]];
 
-            carrotsEaten += mtx[currentIdx[0]][[currentIdx[1]]];
-            
             // console.log(carrotsEaten, mtx[current[0]][[current[1]]])
             // console.log(mtx[current[0]][current[1]])
         } 
+
+        carrotsEaten += mtx[currentIdx[0]][[currentIdx[1]]];
+        console.log('FIRST EATEN SQUARE: ', carrotsEaten)
         
         for(col = 0; col < mtx.length; col++) {
-            row = currentIdx[0], col = currentIdx[1]
-            let top = [row-1, col];
-            left = [row, col-1];
-            right = [row, col+1];
-            let bottom = [row+1, col];
-            let sidesOfCurrent = [mtx[top[0]][[top[1]]], mtx[left[0]][[left[1]]], mtx[right[0]][[right[1]]], mtx[bottom[0]][[bottom[1]]]]
+            let currentSquare = currentIdx;
+            let mostCarrots = 0;
+            let tempIdx = [];
+            row = currentSquare[0], col = currentSquare[1];
+            let topIdx = [row-1, col];
+            let topVal = mtx[topIdx[0]][[topIdx[1]]];
+            leftIdx = [row, col-1];
+            let leftVal = mtx[leftIdx[0]][[leftIdx[1]]];
+            rightIdx = [row, col+1];
+            let rightVal = mtx[rightIdx[0]][[rightIdx[1]]];
+            let bottomIdx = [row+1, col];
+            let bottomVal = mtx[bottomIdx[0]][[bottomIdx[1]]];
+            // let sidesOfCurrent = [topVal, leftVal, rightVal, bottomVal]
             // console.log(sidesOfCurrent)
-            console.log(Math.max(...sidesOfCurrent))
+            
+            if ((topVal) && topVal > mostCarrots) mostCarrots = topVal; currentSquare = topIdx; // => [0, 2]
+            console.log('CHECK TOP CARROTS: ', mostCarrots)
+            if ((leftVal) && leftVal > mostCarrots) mostCarrots = leftVal; currentSquare = [leftIdx[0], leftIdx[1]];
+            console.log('CHECK LEFT CARROTS: ',mostCarrots)
+            if ((rightVal) && rightVal > mostCarrots) mostCarrots = rightVal; currentSquare = [rightIdx[0], rightIdx[1]];
+            console.log('CHECK RIGHT CARROTS: ',mostCarrots)
+            if ((bottomVal) && bottomVal > mostCarrots) mostCarrots = bottomVal; currentSquare = [bottomIdx[0], bottomIdx[1]];
+
+            console.log('CHECK BOTTOM CARROTS: ',mostCarrots)
+
+            carrotsEaten += mostCarrots;
+
+            console.log('CURRENT CARROTS EATEN: ', carrotsEaten)
+
+            mostCarrots = 0;
+
+        //    current = mtx.indexOf(Math.max(...sidesOfCurrent))
+        //    console.log(mostCarrots)
         }
 
         
