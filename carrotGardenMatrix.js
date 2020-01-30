@@ -110,21 +110,13 @@ let garden = [
     [3, 1, 0, 5, 8]
 ];
 
-const checkOddEven = (arr) => {
-    if(arr.length % 2 === 0) {
-        return arr[arr.length%2]
-    } else {
-        return arr[arr.length%2 - 1]
-    }
-}
-
 const carrotGarden = (mtx) => {
 
     let carrotsEaten = 0;
     let startingIdx = [];
     let squareEaten = false;
     let currentSquare = startingIdx;
-    let mid = (mtx.length % 2 === 0) ? mtx[Math.floor(mtx.length / 2)] : mtx[Math.floor(mtx.length / 2) - 1];
+    let mid = Math.floor(mtx.length / 2);
     let row, col;
 
         let currentMidSquares = [];
@@ -135,20 +127,19 @@ const carrotGarden = (mtx) => {
                 // PUSH TWO MIDDLE; SET STARTING INDEX TO MIDDLE WITH GREATEST VALUE
             if(mtx.length % 2 === 0) {
                 currentMidSquares.push(mtx[mid - 1], mtx[mid]); 
-                startingIdx = currentMidSquares[0][mid] > currentMidSquares[[1][mid]] ? [0, [mid]] : [1, mid];
+                startingIdx = currentMidSquares[0][mid] > currentMidSquares[[1][mid]] ? [0, mid] : [1, mid];
             } else {
                 // CHECK IF CURRENT MIDDLE ARRAYS LENGTH IS ODD
                     // PUSH SINGLE MIDDLE; SET STARTING INDEX TO MIDDLE WITH GREATEST VALUE
                 currentMidSquares.push(mtx[mid]); 
-                console.log(mid)
-                startingIdx = [0, [mid]];
+                startingIdx = [0, mid];
             }
-
-
+            
+            
             // DEFINE LEFT AND RIGHT INDECIES
             let leftIdx = [startingIdx[0], startingIdx[1] - 1];
             let rightIdx = [startingIdx[0], startingIdx[1] + 1];
-
+            
             // IF NUM OF CARROTS TO LEFT OF STARTING INDEX CARROTS IS GREATER; REDEFINE
             if (mtx[leftIdx[0]][leftIdx[1]] > mtx[startingIdx[0][startingIdx[1]]]) {
                 startingIdx = [leftIdx[0]][leftIdx[1]];
@@ -157,8 +148,8 @@ const carrotGarden = (mtx) => {
             if (mtx[rightIdx[0]][rightIdx[1]] > mtx[startingIdx[0][startingIdx[1]]]) {
                 startingIdx = [rightIdx[0]][rightIdx[1]];
             }
-
-        // SET AMOUNT OF CARROTS EATEN; SET SQUARE EATEN TO "TRUE"; SET CURRENT SQUARE TO STARTING IDX
+            
+            // SET AMOUNT OF CARROTS EATEN; SET SQUARE EATEN TO "TRUE"; SET CURRENT SQUARE TO STARTING IDX
         carrotsEaten += mtx[startingIdx[0]][[startingIdx[1]]];
         squareEaten = true;
         currentSquare = startingIdx;
@@ -190,6 +181,7 @@ const carrotGarden = (mtx) => {
                 mostCarrots = topVal; 
                 highestValIdx = topIdx;
             }
+            console.log("mostcarrots ", topIdx)
             if (leftVal > mostCarrots) { 
                 mostCarrots = leftVal; 
                 highestValIdx = leftIdx; 
@@ -202,7 +194,6 @@ const carrotGarden = (mtx) => {
                 mostCarrots = bottomVal; 
                 highestValIdx = bottomIdx; 
             }
-            
             // ADD mostCarrots VALUE TO carrotsEaten; IF mostCarrots DOES NOT EQUAL 0, SET squareEaten TO "TRUE"
             carrotsEaten += mostCarrots;
             if(mostCarrots !== 0) squareEaten = true;
