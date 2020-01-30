@@ -103,7 +103,7 @@
 // NON-COMMENTED CODE
 
 let garden = [
-    [6, 7, 8, 6, 3],
+    [5, 7, 8, 6, 3],
     [0, 0, 7, 0, 4],
     [4, 6, 3, 4, 9],
     [3, 1, 0, 5, 8]
@@ -130,7 +130,7 @@ const carrotGarden = (mtx) => {
             if (mtx[rightIdx[0]][rightIdx[1]] > mtx[startingIdx[0][startingIdx[1]]]) startingIdx = [rightIdx[0]][rightIdx[1]];
 
         carrotsEaten += mtx[startingIdx[0]][[startingIdx[1]]];
-        // squareEaten = true;
+        squareEaten = true;
         currentSquare = startingIdx;
 
     while (squareEaten) {
@@ -140,42 +140,29 @@ const carrotGarden = (mtx) => {
 
             row = currentSquare[0], col = currentSquare[1];
             let topIdx = [row - 1, col];
-            let topVal = mtx[topIdx[0]][[topIdx[1]]];;
+            let topVal = topIdx[0] < 0 || topIdx[1] < 0 ? -1 : mtx[topIdx[0]][[topIdx[1]]];
             let bottomIdx = [row + 1, col]; 
-            let bottomVal = mtx[bottomIdx[0]][[bottomIdx[1]]];
+            let bottomVal = bottomIdx[0] < 0 || bottomIdx[1] < 0 ? -1 : mtx[bottomIdx[0]][[bottomIdx[1]]];
             leftIdx = [row, col - 1], 
             rightIdx = [row, col + 1];
-            let leftVal = mtx[leftIdx[0]][[leftIdx[1]]]; 
-            letrightVal = mtx[rightIdx[0]][[rightIdx[1]]];
+            let leftVal = leftIdx[0] < 0 || leftIdx[1] < 0 ? -1 : mtx[leftIdx[0]][[leftIdx[1]]]; 
+            let rightVal = rightIdx[0] < 0 || rightIdx[1] < 0 ? -1 : mtx[rightIdx[0]][[rightIdx[1]]];
 
             if ((topVal) && topVal > mostCarrots) { mostCarrots = topVal; highestValIdx = topIdx; console.log('top val', topVal)}
-            if ((leftVal) && leftVal > mostCarrots) { mostCarrots = leftVal; highestValIdx = leftIdx; }
-            if ((rightVal) && rightVal > mostCarrots) { mostCarrots = rightVal; highestValIdx = rightIdx; }
-            if ((bottomVal) && bottomVal > mostCarrots) { mostCarrots = bottomVal; highestValIdx = bottomIdx; }
+            if ((leftVal) && leftVal > mostCarrots) { mostCarrots = leftVal; highestValIdx = leftIdx; console.log('left val', leftVal)}
+            if ((rightVal) && rightVal > mostCarrots) { mostCarrots = rightVal; highestValIdx = rightIdx; console.log('right val', rightVal)}
+            if ((bottomVal) && bottomVal > mostCarrots) { mostCarrots = bottomVal; highestValIdx = bottomIdx; console.log('bott val', bottomVal)}
 
             
-            console.log('current square: ', currentSquare)
-            console.log('highest index: ', highestValIdx)
-            console.log('most carrots: ', mostCarrots)
-            console.log('carrots eaten', carrotsEaten)
             console.log(squareEaten)
             
             carrotsEaten += mostCarrots;
-            // if(mostCarrots !== 0) {squareEaten = true;}
+            if(mostCarrots !== 0) {squareEaten = true;}
 
             mostCarrots = 0;
             console.log('CLEAR MOST CARROTS: ', mostCarrots)
             mtx[currentSquare[0]][currentSquare[1]] = 0;
-            currentSquare = highestValIdx.length > 0 ? highestValIdx : [];
-            
-            
-            console.log('current square: ', currentSquare)
-            console.log('highest index: ', highestValIdx)
-            console.log('most carrots: ', mostCarrots)
-            console.log('carrots eaten', carrotsEaten)
-            console.log(squareEaten)
-    
-
+            currentSquare = highestValIdx ? highestValIdx : [];
 
     }
 
