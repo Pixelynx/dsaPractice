@@ -60,14 +60,18 @@ const checkDown = () => {};
 
 const checkHorizontal = (puzzle, word, idx, count) => {
     let nextChar = puzzle[idx[0]][idx[1]+1];
+    // console.log(nextChar)
+    if(nextChar === -1) return false;
     if(count === word.length) return true;
     if(nextChar === word[count]) {
         count++; idx[1] = idx[1]+1;
+    } else {
+        count = 0;
     }
     return checkHorizontal(puzzle, word, idx, count);
 }
 
-console.log(checkHorizontal(puzzle, word_1, [0,2], 1))
+// console.log(checkHorizontal(puzzle, word_2, [0,2], 1))
 
 const puzzleContainsWord = (puzzle, word) => {
     let count = 0;
@@ -77,13 +81,15 @@ const puzzleContainsWord = (puzzle, word) => {
         for(let col = 0; col < puzzle[0].length; col++) {
             if(puzzle[row][col] === word[count]) {
                 count++; startingIdx = [row, col];
-                
+                exists = checkHorizontal(puzzle, word, startingIdx, count)
             }
         }
+        if(count === word.length) return true;
     }
+    return false;
 }
 
-// console.log(`The puzzle contains the word ${word_1}: ${puzzleContainsWord(puzzle,word_1)}`);
+console.log(`The puzzle contains the word ${word_1}: ${puzzleContainsWord(puzzle, word_1)}`);
 // console.log(`Expected: TRUE`);
 // console.log('___')
 // console.log(`The puzzle contains the word ${word_2}: ${puzzleContainsWord(puzzle,word_2)}`);
