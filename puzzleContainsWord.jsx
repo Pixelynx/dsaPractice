@@ -59,52 +59,45 @@ const checkDown = () => {};
 // };
 
 const checkHorizontal = (puzzle, word, idx, count) => {
-
+    let nextChar = puzzle[idx[0]][idx[1]+1];
+    if(count === word.length) return true;
+    if(nextChar === word[count]) {
+        count++; idx[1] = idx[1]+1;
+    }
+    return checkHorizontal(puzzle, word, idx, count);
 }
+
+console.log(checkHorizontal(puzzle, word_1, [0,2], 1))
 
 const puzzleContainsWord = (puzzle, word) => {
-    
+    let count = 0;
+    let startingIdx;
+
+    for(let row = 0; row < puzzle.length; row++) {
+        for(let col = 0; col < puzzle[0].length; col++) {
+            if(puzzle[row][col] === word[count]) {
+                count++; startingIdx = [row, col];
+                
+            }
+        }
+    }
 }
 
-console.log(
-  `The puzzle contains the word ${word_1}: ${puzzleContainsWord(
-    puzzle,
-    word_1
-  )}`
-);
-console.log(`Expected: TRUE`);
-console.log(
-  `The puzzle contains the word ${word_2}: ${puzzleContainsWord(
-    puzzle,
-    word_2
-  )}`
-);
-console.log(`Expected: FALSE`);
-console.log(
-  `The puzzle contains the word ${word_3}: ${puzzleContainsWord(
-    puzzle,
-    word_3
-  )}`
-);
-console.log(`Expected: FALSE`);
-console.log(
-  `The puzzle contains the word ${word_4}: ${puzzleContainsWord(
-    puzzle,
-    word_4
-  )}`
-);
-console.log(`Expected: TRUE`);
-console.log(
-  `The puzzle contains the word ${word_5}: ${puzzleContainsWord(
-    puzzle,
-    word_5
-  )}`
-);
-console.log(`Expected: TRUE`);
-console.log(
-  `The puzzle contains the word ${word_6}: ${puzzleContainsWord(
-    puzzle,
-    word_6
-  )}`
-);
-console.log(`Expected: FALSE`);
+// console.log(`The puzzle contains the word ${word_1}: ${puzzleContainsWord(puzzle,word_1)}`);
+// console.log(`Expected: TRUE`);
+// console.log('___')
+// console.log(`The puzzle contains the word ${word_2}: ${puzzleContainsWord(puzzle,word_2)}`);
+// console.log(`Expected: FALSE`);
+// console.log('___')
+// console.log(`The puzzle contains the word ${word_3}: ${puzzleContainsWord(puzzle,word_3)}`);
+// console.log(`Expected: FALSE`);
+// console.log('___')
+// console.log(`The puzzle contains the word ${word_4}: ${puzzleContainsWord(puzzle,word_4)}`);
+// console.log(`Expected: TRUE`);
+// console.log('___')
+// console.log(`The puzzle contains the word ${word_5}: ${puzzleContainsWord(puzzle,word_5)}`);
+// console.log(`Expected: TRUE`);
+// console.log('___')
+// console.log(`The puzzle contains the word ${word_6}: ${puzzleContainsWord(puzzle,word_6)}`);
+// console.log(`Expected: FALSE`);
+// console.log('___')
