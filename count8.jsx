@@ -7,9 +7,9 @@
 const count8 = (n) => {
     
     if(!n) return 0;
-    let currentDig = (n % 10);
+    let currentDig = (n%10);
     n = Math.floor(n/10);
-    let nextDig = (n % 10);
+    let nextDig = (n%10);
 
     if(currentDig === 8 && nextDig === 8) {
         return 2 + count8(n);
