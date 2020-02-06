@@ -72,6 +72,22 @@ const checkHorizontal = (puzzle, word, idx, count) => {
     return checkHorizontal(puzzle, word, idx, count);
 }
 
+const checkVertical = (puzzle, word, idx, count) => {
+    let nextChar = puzzle[idx[0]+1][idx[1]];
+    // => [3, 1]
+    console.log("NEXT CHARACTER: ", nextChar)
+    console.log("CURRENT INDEX: ", idx)
+
+    if(count === word.length) return true;
+    if(nextChar === word[count]) {
+        count++; idx[1] = idx[1]+1;
+        console.log("NEW INDEX: ", idx)
+        console.log("VERTICAL COUNT: ", count)
+    } else count = 0; return
+    
+    return checkVertical(puzzle, word, idx, count);
+}
+
 // console.log(checkHorizontal(puzzle, word_2, [0,2], 1))
 
 const puzzleContainsWord = (puzzle, word) => {
@@ -82,7 +98,17 @@ const puzzleContainsWord = (puzzle, word) => {
         for(let col = 0; col < puzzle[0].length; col++) {
             if(puzzle[row][col] === word[count]) {
                 count++; startingIdx = [row, col];
-                checkHorizontal(puzzle, word, startingIdx, count) === true ? count : count = 0
+                console.log("CURRENT CHARACTER: ", puzzle[row][col])
+                console.log("PUZZLE FUNC COUNT: ", count)
+                // return checkHorizontal(puzzle, word, startingIdx, count) === true ? true : count = 0;
+                console.log('CURRENT WORD: ', word)
+                if (checkHorizontal(puzzle, word, startingIdx, count) === true) {
+                    return true;
+                } else count = 0;
+                
+                if (checkVertical(puzzle, word, startingIdx, count) === true) {
+                    return true;
+                } else count = 0;
             }
         }
         if(count === word.length) return true;
@@ -90,21 +116,21 @@ const puzzleContainsWord = (puzzle, word) => {
     return false;
 }
 
-// console.log(`The puzzle contains the word ${word_1}: ${puzzleContainsWord(puzzle, word_1)}`);
-// console.log(`Expected: TRUE`);
+console.log(`The puzzle contains the word ${word_1}: ${puzzleContainsWord(puzzle, word_1)}`);
+console.log(`Expected: TRUE`);
 // console.log('___')
-// console.log(`The puzzle contains the word ${word_2}: ${puzzleContainsWord(puzzle,word_2)}`);
+// console.log(`The puzzle contains the word ${word_2}: ${puzzleContainsWord(puzzle, word_2)}`);
 // console.log(`Expected: FALSE`);
 // console.log('___')
-// console.log(`The puzzle contains the word ${word_3}: ${puzzleContainsWord(puzzle,word_3)}`);
+// console.log(`The puzzle contains the word ${word_3}: ${puzzleContainsWord(puzzle, word_3)}`);
 // console.log(`Expected: FALSE`);
 // console.log('___')
-// console.log(`The puzzle contains the word ${word_4}: ${puzzleContainsWord(puzzle,word_4)}`);
+console.log(`The puzzle contains the word ${word_4}: ${puzzleContainsWord(puzzle, word_4)}`);
+console.log(`Expected: TRUE`);
+// console.log('___')
+// console.log(`The puzzle contains the word ${word_5}: ${puzzleContainsWord(puzzle, word_5)}`);
 // console.log(`Expected: TRUE`);
 // console.log('___')
-// console.log(`The puzzle contains the word ${word_5}: ${puzzleContainsWord(puzzle,word_5)}`);
-// console.log(`Expected: TRUE`);
-// console.log('___')
-// console.log(`The puzzle contains the word ${word_6}: ${puzzleContainsWord(puzzle,word_6)}`);
+// console.log(`The puzzle contains the word ${word_6}: ${puzzleContainsWord(puzzle, word_6)}`);
 // console.log(`Expected: FALSE`);
 // console.log('___')
