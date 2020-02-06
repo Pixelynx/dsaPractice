@@ -20,7 +20,6 @@ const removeDupsRecursive = (str) => {
 let str1 = "yyzzza";
 let str2 = "abbbcdd";
 let str3 = "Hello";
-str1 = str1.slice(1, str1.length)
 
 console.log(removeDupsRecursive(str1))
 console.log(removeDupsRecursive(str2))
