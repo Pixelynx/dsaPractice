@@ -4,7 +4,7 @@ const changePi = (str) => {
     if(!str.length) return "";
     let firstChar = str[0], secChar = str[1];
 
-    if(firstChar === "p" && secChar === "i") {
+    if(firstChar+secChar === "pi") {
         let foundPi = "3.14";
         return foundPi += changePi(str.slice(2))
     } else {
@@ -13,5 +13,5 @@ const changePi = (str) => {
 }
 
 console.log(changePi("xpix")) // "x3.14x"
-console.log(changePi("pipi")) // "3.143.14"
+console.log(changePi("piipi")) // "3.143.14"
 console.log(changePi("pip")) // "3.14p"
