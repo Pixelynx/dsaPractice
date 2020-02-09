@@ -3,7 +3,8 @@
 const changeXY = (str) => {
     let currentLetter = str.slice(0, 1);
     str = str.slice(1, str.length);
-
+    console.log("STR TEST: ", str)
+    console.log("CURRENT LETT: ", currentLetter)
     if (!str.length) return "";
     if (currentLetter === "x") {
         currentLetter = "y";
