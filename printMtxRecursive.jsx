@@ -11,5 +11,15 @@ let puzzle = [
   ];
 
   const printMtxRecursive = (mtx) => {
-      
+    if(!mtx.length) return;
+    if(mtx[0].length === 1) {
+        console.log(mtx[0][0])
+        return printMtxRecursive(mtx.slice(1))
+    } else {
+        console.log(mtx[0][0])
+        mtx[0] = mtx[0].slice(1);
+        return printMtxRecursive(mtx)
+    }
   }
+
+  console.log(printMtxRecursive(puzzle))
