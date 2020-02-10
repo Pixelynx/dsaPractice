@@ -22,4 +22,4 @@ let puzzle = [
     }
   }
 
-  console.log(printMtxRecursive(puzzle))
+printMtxRecursive(puzzle)
