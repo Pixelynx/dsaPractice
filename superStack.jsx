@@ -31,6 +31,7 @@ function superStack(operations) {
 
         for(let i = 0; i < operations.length; i++) {
             let currentItem = operations[i].split(' ');
+
             if(currentItem[0] === 'push') {
                 currentItem[1] = Number(currentItem[1]);
                 stack.push(currentItem[1])
@@ -47,7 +48,6 @@ function superStack(operations) {
             }  
     }
     return this;
-
 }
 
 console.log(superStack([ 'push 4', 'pop','push 3','push 5','push 2','inc 3 1','pop','push 1','inc 2 2','push 4','pop','pop' ]))

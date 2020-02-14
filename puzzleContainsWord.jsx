@@ -83,34 +83,36 @@ const checkDown = () => {};
 
 // console.log(checkVertical(puzzle, word_4, [1, 1], 1))
 
-const tryAllDirections = (puzzle, word, idx, count) => {
-    let checkHorizontal = puzzle[idx[0]][idx[1]+1];
-    let checkVertical = puzzle[idx[0]+1][idx[1]];
-    let checkDiagonal = puzzle[idx[0]+1][idx[1]+1];
-    console.log('CHECK HORIZONTAL: ', checkHorizontal)
+const tryAllDirections = (puzzle, word, idx) => {
+    // let checkHorizontal = puzzle[idx[0]][idx[1]+1];
+    // let checkVertical = puzzle[idx[0]+1][idx[1]];
+    // let checkDiagonal = puzzle[idx[0]+1][idx[1]+1];
+    console.log('CURRENT LETTER: ', word[0])
     
-    if(count === word.length) return true;
-    if((checkHorizontal) && checkHorizontal === word[count]) {
-        count++;
-        console.log(word[count])
-        return tryAllDirections(puzzle, word, idx, count);
+    if(!word.length) return true;
+    if(puzzle[idx[0]][idx[1]+1] === word[0]) {
+        word.slice(1);
+        console.log(word[0])
+        return tryAllDirections(puzzle, word, idx[1] = idx[1]+1);
     } else {
-        if((checkVertical) && checkVertical === word[count]) {
-            count++;
-            console.log(word[count])
-            return tryAllDirections(puzzle, word, idx, count)
+        if(puzzle[idx[0]+1][idx[1]] === word[0]) {
+            word.slice(1);
+            console.log(word[0])
+            return tryAllDirections(puzzle, word, idx[0] = idx[0]+1)
         } else {
-            if((checkDiagonal) && checkDiagonal === word[count]) {
-                count++;
-                console.log(word[count]) 
-                return tryAllDirections(puzzle, word, idx, count);
+            if(puzzle[idx[0]+1][idx[1]+1] === word[0]) {
+                word.slice(1);
+                console.log(word[0]) 
+                return tryAllDirections(puzzle, word, idx = idx[idx[0]+1][idx[1]+1]);
+            } else {
+                return tryAllDirections(puzzle, word, idx);
             }
         }
     }
     return false;
 }
 
-console.log(tryAllDirections(puzzle, word_4, [0, 0], 1))
+console.log(tryAllDirections(puzzle, word_4, [0, 0]))
 
 const puzzleContainsWord = (puzzle, word) => {
     let count = 0;
@@ -120,7 +122,7 @@ const puzzleContainsWord = (puzzle, word) => {
         for(let col = 0; col < puzzle[0].length; col++) {
             if(puzzle[row][col] === word[count]) {
                 count++; startingIdx = [row, col];
-                return tryAllDirections(puzzle, word, startingIdx, count) ? true : false;
+                return tryAllDirections(puzzle, word, startingIdx) ? true : false;
             }
         }
     }
