@@ -1,1 +1,1 @@
-# dsaPractice
+# DSA Algorithm Practice
