@@ -12,6 +12,17 @@ class Stack{
         this.items.pop();
     }
     
+    // inc(i, v) {
+    //     let items = this.items;
+    //     if(i === 1) return this;
+    //     items[i] = v + items[i];
+    //     return this.inc(i-1, v);
+    //     // while(count < i) {
+    //     //     items[count] = v + items[count]
+    //     //     count++
+    //     // }
+    // }
+
     inc(i, v) {
         let items = this.items;
         let count = 0;
@@ -19,7 +30,6 @@ class Stack{
             items[count] = v + items[count]
             count++
         }
-        return items;
     }
 
     print() {
@@ -27,28 +37,48 @@ class Stack{
     }
 }
 
+let stack = new Stack();
 function superStack(operations) {
-    let stack = new Stack();
 
-        for(let i = 0; i < operations.length; i++) {
-            let currentItem = operations[i].split(' ');
 
-            switch(currentItem[0]) {
-                case "push":
-                    currentItem[1] = Number(currentItem[1]);
-                    stack.push(currentItem[1])
-                    console.log(stack.print());
-                    break;
-                case "pop":
-                    stack.pop();
-                    console.log(stack.print());
-                    break;
-                case "inc":
-                    currentItem[1] = Number(currentItem[1]), currentItem[2] = Number(currentItem[2]);
-                stack.inc(currentItem[1], currentItem[2])
+    for(let i = 0; i < operations.length; i++) {
+        let currentItem = operations[i].split(' ');
+        
+        switch(currentItem[0]) {
+            case "push":
+                stack.push(Number(currentItem[1]))
                 console.log(stack.print());
-            }   
+                break;
+            case "pop":
+                stack.pop();
+                console.log(stack.print());
+                break;
+            case "inc":
+            stack.inc(Number(currentItem[1]), Number(currentItem[2]))
+            console.log(stack.print());
+        }  
+}
+    // for(let i = 0; i < operations.length; i++) {
+    //     let currentItem = operations[0].split(' ');
+        
+    //     switch(currentItem[0]) {
+    //         case "push":
+    //             stack.push(Number(currentItem[1]))
+    //             console.log(stack.print());
+    //             break;
+    //         case "pop":
+    //             stack.pop();
+    //             console.log(stack.print());
+    //             break;
+    //         case "inc":
+    //             currentItem[1] = Number(currentItem[1]), currentItem[2] = Number(currentItem[2]);
+    //         stack.inc(currentItem[1], currentItem[2])
+    //         console.log(stack.print());
 
+    //     }  
+    //     // operations = operations.slice(1);
+
+    // }
             // if(currentItem[0] === 'push') {
             //     currentItem[1] = Number(currentItem[1]);
             //     stack.push(currentItem[1])
@@ -63,10 +93,8 @@ function superStack(operations) {
             //     stack.inc(currentItem[1], currentItem[2])
             //     console.log(stack.print());
             // }  
-    }
 }
-
-console.log(superStack([ 'push 4', 'pop','push 3','push 5','push 2','inc 3 1','pop','push 1','inc 2 2','push 4','pop','pop' ]))
+console.log(superStack([ 'push 4', 'pop', 'push 3', 'push 5', 'push 2', 'inc 3 1', 'pop', 'push 1', 'inc 2 2', 'push 4', 'pop', 'pop' ]))
 // 4
 // => 4
 //
