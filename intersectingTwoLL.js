@@ -43,8 +43,8 @@ listB.insert(5);
 const getIntersectionNode = (headA, headB) => {
     if (!headA || !headB) return null;
     console.log('HEADS: ', headA, headB)
-        var pointerA = headA;
-        var pointerB = headB;
+        let pointerA = headA;
+        let pointerB = headB;
         while (pointerA !== pointerB) {
             console.log('NEXTS: ', pointerA.next == null ? headB : pointerA.next, pointerB.next == null ? headA : pointerB.next)
             pointerA = (pointerA == null ? headB : pointerA.next);
