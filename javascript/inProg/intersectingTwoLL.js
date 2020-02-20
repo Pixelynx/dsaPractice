@@ -13,11 +13,11 @@ class LinkedList {
     insert(val) {
         let newNode = new ListNode(val);
         let current;
-        if(!this.head) this.head = newNode;
+        if (!this.head) this.head = newNode;
         else {
             current = this.head;
 
-            while(current.next) {
+            while (current.next) {
                 current = current.next;
             }
             current.next = newNode;
@@ -43,15 +43,16 @@ listB.insert(5);
 const getIntersectionNode = (headA, headB) => {
     if (!headA || !headB) return null;
     console.log('HEADS: ', headA, headB)
-        let pointerA = headA;
-        let pointerB = headB;
-        while (pointerA !== pointerB) {
-            console.log('NEXTS: ', pointerA.next == null ? headB : pointerA.next, pointerB.next == null ? headA : pointerB.next)
-            pointerA = (pointerA == null ? headB : pointerA.next);
-            // console.log('POINTER: ', pointerA)
-            pointerB = (pointerB == null ? headA : pointerB.next);
-        }
-        return pointerA;
+    let pointerA = headA;
+    let pointerB = headB;
+    // console.log(pointerA.val)
+    while (pointerA !== pointerB && (pointerA != null && pointerB != null)) {
+        // console.log('NEXTS: ', pointerA.next == null ? headB : pointerA.next, pointerB.next == null ? headA : pointerB.next)
+        pointerA = (pointerA == null ? headB : pointerA.next);
+        console.log('POINTER: ', pointerA)
+        pointerB = (pointerB == null ? headA : pointerB.next);
+    }
+    return pointerA;
 }
 
 
