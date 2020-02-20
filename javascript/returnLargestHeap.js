@@ -13,27 +13,20 @@ class MinHeap {
     }
     
 	insert(num) {
-        let heap = this.heap;
-        
-        heap.push(num);
-		if(heap.length) {
-            let idx = heap.length - 1;
-            let current = heap[idx];
-            
-            if(heap[0] === null) heap.shift();
-            
-			while(current < heap[idx - 1]) {
-				if(idx >= 1) {
-					[heap[idx - 1], current] = [current, heap[idx - 1]];
-					if(Math.floor(idx/2) > 1) {
-                        idx = idx-1;
+		heap.push(num);
+		if (heap.length > 2) {
+			let idx = heap.length - 1;
+			while (heap[idx] < heap[Math.floor(idx/2)]) {
+				if (idx >= 1) {
+					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], heap[Math.floor(idx/2)]];
+					if (Math.floor(idx/2) > 1) {
+						idx = Math.floor(idx/2);
 					} else {
 						break;
-                    };
+					};
 				};
 			};
-        };
-        if(heap[0] > heap[1]) [heap[0], heap[1]] = [heap[1], heap[0]];
+		};
 	};
 	
 	remove() {
@@ -89,28 +82,21 @@ class MaxHeap {
 	    this.heap = [null];
     }
     
-	insert(num) {
-        let heap = this.heap;
-        
-        heap.push(num);
-		if(heap.length) {
-            let idx = heap.length - 1;
-            let current = heap[idx];
-            
-            if(heap[0] === null) heap.shift();
-            
-			while(current > heap[idx - 1]) {
-				if(idx >= 1) {
-					[heap[idx - 1], current] = [current, heap[idx - 1]];
-					if(Math.floor(idx/2) > 1) {
-                        idx = idx-1;
+    insert(num) {
+		heap.push(num);
+		if (heap.length > 2) {
+			let idx = heap.length - 1;
+			while (heap[idx] > heap[Math.floor(idx/2)]) {
+				if (idx >= 1) {
+					[heap[Math.floor(idx/2)], heap[idx]] = [heap[idx], heap[Math.floor(idx/2)]];
+					if (Math.floor(idx/2) > 1) {
+						idx = Math.floor(idx/2);
 					} else {
 						break;
-                    };
+					};
 				};
 			};
-        };
-        if(heap[0] < heap[1]) [heap[0], heap[1]] = [heap[1], heap[0]];
+		};
 	};
 	
 	remove() {
@@ -162,3 +148,6 @@ newHeap.insert(9)
 newHeap.insert(6)
 // newHeap.sort()
 console.log(newHeap)
+
+
+// 
