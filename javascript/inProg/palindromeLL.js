@@ -51,15 +51,23 @@ class LinkedList {
     }
 };
 
-// const isPalindrome = (head) => {
-
-// }
+const isPalindrome = (head) => {
+    let stack = [];
+    let current = head;
+    while(current.next) {
+        if(current === stack[stack.length-1]) {
+            stack.pop();
+            current = current.next;
+        } else stack.push(current.val);
+    }
+    return !stack.length ? true : false;   
+}
 
 let newList = new LinkedList();
 newList.insert(2);
 newList.insert(6);
-newList.insert(9);
-newList.pop()
+newList.insert(2);
+newList.insert(2);
 
 
-console.log(newList);
+console.log(isPalindrome(newList));
