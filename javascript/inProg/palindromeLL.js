@@ -15,7 +15,6 @@ class Node {
     constructor(val) {
         this.val = val;
         this.next = null;
-
     }
 }
 
@@ -29,20 +28,21 @@ class LinkedList {
         if (!this.head) this.head = newNode;
         else {
             let current = this.head;
-            while (current.next) {
+
+            while (current.next !== null) {
                 current = current.next;
             }
             current.next = newNode;
         }
-
+        return this;
     };
 
     pop() {
-        if(!this.head) return "EMPTY";
-        if(!this.head.next) this.head = null;
+        if (!this.head) return "EMPTY";
+        if (!this.head.next) this.head = null;
         else {
             let prev = this.head, tail = this.head.next;
-            while(tail.next) {
+            while (tail.next) {
                 prev = tail;
                 tail = tail.next;
             }
@@ -50,24 +50,30 @@ class LinkedList {
         }
     }
 };
+let newList = new LinkedList();
+newList.insert(2).insert(6).insert(2).insert(2);
+//onsole.log("LINKED LIST:", newList)
 
 const isPalindrome = (head) => {
-    let stack = [];
-    let current = head;
-    while(current.next) {
-        if(current === stack[stack.length-1]) {
-            stack.pop();
-            current = current.next;
-        } else stack.push(current.val);
-    }
-    return !stack.length ? true : false;   
+    console.log(head, "head")
+
+    // let stack = [];
+    // let count = -1;
+    // let current = head;
+    // console.log(current.next)
+    // while (current.next) {
+    //     stack.push(current.val)
+    //     current = current.next;
+    //     // if(current === stack[count]) {
+    //     //     stack.pop(); count--;
+    //     // } else {
+    //     //     stack.push(current); count++;
+    //     // }
+    // }
+    // console.log(stack)
+    // return stack.length === 0 ? true : false;
 }
 
-let newList = new LinkedList();
-newList.insert(2);
-newList.insert(6);
-newList.insert(2);
-newList.insert(2);
 
-
+// console.log(newList)
 console.log(isPalindrome(newList));
