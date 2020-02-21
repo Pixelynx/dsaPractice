@@ -1,4 +1,4 @@
-var isValid = function (s) {
+const isValid = (s) => {
     let basicStack = [];
     let braces = {
         '{': '}', 
