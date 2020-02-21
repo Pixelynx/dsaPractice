@@ -16,16 +16,16 @@ const lcm = (n1, n2) => {
     let small = Math.min(n1, n2);
     
     // Create copy of larger number
-    // While i % the smaller number does not equal 0, increase i by the larger number
-    // When i % the smaller number equals 0, return the value of i
-    let i = large;
-    while(i % small !== 0){
+    // While currentMultiple % the smaller number does not equal 0, increase currentMultiple by the larger number
+    // When currentMultiple % the smaller number equals 0, return the value of i
+    let currentMultiple = large;
+    while(currentMultiple % small !== 0){
         // console.log("LOG I: ", i)
-        i += large;
+        currentMultiple += large;
     }
     
     //return the number
-    return i;
+    return currentMultiple;
   };
 
 console.log(lcm(17, 11))
