@@ -20,7 +20,7 @@ const lcm = (n1, n2) => {
     // When i % the smaller number equals 0, return the value of i
     let i = large;
     while(i % small !== 0){
-        console.log("LOG I: ", i)
+        // console.log("LOG I: ", i)
         i += large;
     }
     
