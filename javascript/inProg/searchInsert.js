@@ -19,6 +19,21 @@
 // Input: [1,3,5,6], 0
 // Output: 0
 
+const searchInsertTarg = (nums, target) => {
+    for(let i = 0; i <= nums.length; i++) {
+        if(target === 0) return 0;
+        if(nums[i] === target) return i;
+        else {
+            if(nums[i]+1 === target) {
+                return i+1;
+            }
+            else {
+                if(nums[i]-1 === target) {
+                    return i-1;
+                }
+            }
+        }
+    };
+};
 
-
-console.log(searchInsertTarg([1,3,5,6], 5))
+console.log(searchInsertTarg([3,6,7,8,10], 5))
