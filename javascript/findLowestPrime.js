@@ -3,9 +3,9 @@ const findPrime = (num) => {
 
     for(let i = 2; i < num; i++) {
         let currentVal = num;
-
+// console.log(currentVal)
         while(currentVal !== 2 && (currentVal%2===0 || currentVal%1===0)) {
-            if((currentVal/i)%2===0 || (currentVal/i)%1===0) {
+            if((currentVal/i)%1===0) {
                 currentVal = currentVal/i;
             } else {
                 if((currentVal/2)%1===0) {
@@ -19,4 +19,4 @@ const findPrime = (num) => {
     return primes;
 };
 
-console.log(findPrime(23))
+console.log(findPrime(12))
