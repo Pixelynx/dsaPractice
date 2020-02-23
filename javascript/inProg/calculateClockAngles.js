@@ -3,9 +3,10 @@ const calcClockHandAngles = (time) => {
     // when minutes hits 60; reset minutes to 0
 
     time = time.split(":")
-    let mH = time[1];
     let hH = time[0];
+    let mH = time[1];
     if(mH === 60) mH = 0;
+    if(hH > 12) hH = hH - 12;
     if(hH === 12) hH = 0;
 
     let mHAngle = mH * 6;
@@ -16,5 +17,5 @@ const calcClockHandAngles = (time) => {
     return Math.min(currentAngle, 360 - currentAngle);
 };
 
-console.log(calcClockHandAngles("8:55"));
+console.log(calcClockHandAngles("12:55"));
 
