@@ -17,5 +17,5 @@ const calcClockHandAngles = (time) => {
     return Math.min(currentAngle, 360 - currentAngle);
 };
 
-console.log(calcClockHandAngles("12:55"));
+console.log(calcClockHandAngles("13:55"));
 
