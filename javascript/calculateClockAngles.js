@@ -10,12 +10,12 @@ const calcClockHandAngles = (time) => {
     if(hH === 12) hH = 0;
 
     let mHAngle = mH * 6;
-    let hHAngle = hH * 30;
-
+    let hHAngle = hH * 30 + (mH * 0.5);
+    console.log(hHAngle, mHAngle)
     let currentAngle = Math.abs(mHAngle - hHAngle);
-
+    console.log(360 - 72)
     return Math.min(currentAngle, 360 - currentAngle);
 };
 
-console.log(calcClockHandAngles("13:55"));
+console.log(calcClockHandAngles("5:37"));
 
