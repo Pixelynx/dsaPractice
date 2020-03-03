@@ -34,14 +34,31 @@
 // };
 
 var smallerNumbersThanCurrent = function(nums) {
-    let result = nums.slice().sort((a, b) => a - b);
+    // create shallow copy; maintaining ref to original array, and sort
+    let result = nums.slice().sort((a, b) => a-b);
     let map = new Map();
-    for (let i = result.length - 1; i >= 0; i--) { // iterate from end, in cases like [7,7,7,7] we will have first index
+
+    for (let i = result.length - 1; i >= 0; i--) { 
+        // start at end of copied array; set map to array value and index in array
         map.set(result[i], i);
-        console.log(result[i], i)
     }
     
-    nums.forEach((v, i) => result[i] = map.get(v));
+    // loop through original array; redefine current value[idx] of copied array to value[key] of map
+    // Map { 8 => 4, 4 => 3, 2 => 1, 1 => 0 }
+        // in result: 8 is at index 4; there are 4 numbers smaller
+        // in result: 4 is at index 3; there are 3 numbers smaller
+        // in result: 2 is at index 1; there is 1 number smaller
+        // in result: 1 is at index 0; there are no smaller numbers
+
+    nums.forEach((val, idx) => {
+        result[idx] = map.get(val)
+
+        // num[0] = 8; result[0] = map[8] => 4
+        // num[1] = 1; result[1] = map[1] => 0
+        // num[2] = 2; result[2] = map[2] => 1
+        // num[3] = 2; result[3] = map[2] => 1
+        // num[4] = 4; result[4] = map[4] => 3
+    });
     
     return result;
 };
