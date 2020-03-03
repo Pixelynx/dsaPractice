@@ -45,10 +45,10 @@ var smallerNumbersThanCurrent = function(nums) {
     
     // loop through original array; redefine current value[idx] of copied array to value[key] of map
     // Map { 8 => 4, 4 => 3, 2 => 1, 1 => 0 }
-        // in result: 8 is at index 4; there are 4 numbers smaller
-        // in result: 4 is at index 3; there are 3 numbers smaller
-        // in result: 2 is at index 1; there is 1 number smaller
-        // in result: 1 is at index 0; there are no smaller numbers
+        // in map: key 8 has value 4; there are 4 numbers smaller than 8
+        // in map: key 4 has value 3; there are 3 numbers smaller than 4
+        // in map: key 2 has value 1; there is 1 number smaller than 2
+        // in map: key 1 has value 0; there are no smaller numbers for 1
 
     nums.forEach((val, idx) => {
         result[idx] = map.get(val)
