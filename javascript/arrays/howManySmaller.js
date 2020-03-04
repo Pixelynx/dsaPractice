@@ -33,7 +33,7 @@
     
 // };
 
-var smallerNumbersThanCurrent = function(nums) {
+const smallerNumbersThanCurrent = (nums) => {
     // create shallow copy; maintaining ref to original array, and sort
     let result = nums.slice().sort((a, b) => a-b);
     let map = new Map();
@@ -62,5 +62,6 @@ var smallerNumbersThanCurrent = function(nums) {
     
     return result;
 };
+
 
 console.log(smallerNumbersThanCurrent([8, 1, 2, 2, 4]))
