@@ -12,34 +12,46 @@
 // Input: s = "PAYPALISHIRING", numRows = 3
 // Output: "PAHNAPLSIIGYIR"
 
-let str = "PAYPALISHIRING";
 
 // placing each char str in the matrix starting from [0,0]; for as long as the row is less than numRows, insert chars down the rows
     // else insert char up one +1 row and +1 one col until back at row 0
 
-const convertToMtx = (s, numRows) => {
-    s = s.split("")
-    // let mtx = [];
+// const convertToMtx = (s, numRows) => {
+//     s = s.split("")
+//     // let mtx = [];
+//     let row = 0, col = 0;
+//     let mtx = new Array();
+    
+//     while(s.length) {
+//         if(!mtx.length) mtx.push(new Array(s.shift())), row++;
+//         else {
+//             if(mtx.length < numRows) {
+//                 mtx.push(new Array(s.shift())), row++;
+//             } else {
+//                 if(row < numRows) mtx[row][col] = s.shift(), row++;
+//                 else {
+//                         console.log(row)
+//                         row--; col++;
+//                         mtx[row][col] = s.shift();
+//                 }
+//             } 
+//         }
+//     }
+    
+//     return mtx;
+// }
+let str = "PAYPALISHIRING";
+
+const zigZagConversion = (s, numRows) => {
+    let arr = new Array();
     let row = 0, col = 0;
-    let mtx = new Array();
-    
-    while(s.length) {
-        if(!mtx.length) mtx.push(new Array(s.shift())), row++;
-        else {
-            if(mtx.length < numRows) {
-                mtx.push(new Array(s.shift())), row++;
-            } else {
-                if(row < numRows) mtx[row][col] = s.shift(), row++;
-                else {
-                        console.log(row)
-                        row--; col++;
-                        mtx[row][col] = s.shift();
-                }
-            } 
-        }
+    s = s.split("");
+
+    while(!s.length) {
+        if(arr.length < numRows) arr.push(s.shift()), row++;
+        // if(row >)
     }
-    
-    return mtx;
+    return arr;
 }
 
-console.log(convertToMtx(str, 3))
+console.log(zigZagConversion(str, 3))
