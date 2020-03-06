@@ -11,29 +11,22 @@
 // Output: [[1,2],[2,3],[3,4]]
 // Explanation: The minimum absolute difference is 1. List all pairs with difference equal to 1 in ascending order.
 
-// const minimumAbsDifference = (arr) => {
-//     arr = arr.sort((a, b) => a-b);
-//     let minAbs = Number.POSITIVE_INFINITY;
-//     let minPairs;
-
-//     for(let i = 0; i < arr.length; i++) {
-//         if(arr[i+1] - arr[i] < minAbs) {
-//             minAbs = arr[i+1] - arr[i];
-//             minPairs = new Array();
-//             minPairs.push(new Array(arr[i], arr[i+1]));
-//         } else {
-//             if(arr[i+1] - arr[i] === minAbs) minPairs.push(new Array(arr[i], arr[i+1]));
-//         }
-//     };
-
-//     return minPairs;
-// };
-
 const minimumAbsDifference = (arr) => {
     arr = arr.sort((a, b) => a-b);
-    
-}
+    let minAbs = Number.POSITIVE_INFINITY;
+    let minPairs;
 
-let arr = [4,2,1,3];
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i+1] - arr[i] < minAbs) {
+            minAbs = arr[i+1] - arr[i];
+            minPairs = new Array();
+            minPairs.push(new Array(arr[i], arr[i+1]));
+        } else {
+            if(arr[i+1] - arr[i] === minAbs) minPairs.push(new Array(arr[i], arr[i+1]));
+        }
+    };
+
+    return minPairs;
+};
 
 console.log(minimumAbsDifference(arr));
