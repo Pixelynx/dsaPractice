@@ -6,11 +6,11 @@ const anagram = (str1, str2) => {
 
     for (let letter of str1) {
         if (letters[letter]) {
-            console.log("IF: ", letters)
+            console.log("IF: ", str1[letter])
             letters[letter]++
         }
         else {
-            console.log("ELIF: ", letters)
+            console.log("ELIF: ", str1[letter])
             letters[letter]++
         }
     }
