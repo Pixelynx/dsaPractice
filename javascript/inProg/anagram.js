@@ -1,7 +1,6 @@
 // const anagram = (str1, str2) => {
-//     if(str1.length !== str2.length){
-//       return false
-//     }
+//     if(str1.length !== str2.length) return false
+
 //     let letters = {}
 
 //     for(let letter of str1) {
@@ -16,17 +15,26 @@
 //     return true;
 // }
 
+// const anagram = (str1, str2) => {
+//     if(str1.length !== str2.length) return false;
+//     if(!str1.length && !str2.length) return true;
+//     str1 = str1.split("").sort();
+//     str2 = str2.split("").sort();
+
+//     if(str1.shift() === str2.shift()) {
+//         str1 = str1.join(""), str2 = str2.join("");
+//         return anagram(str1, str2);
+//     }
+//     return false;
+// }
+
 const anagram = (str1, str2) => {
     if(str1.length !== str2.length) return false;
-    if(!str1.length && !str2.length) return true;
-    str1 = str1.split("").sort();
-    str2 = str2.split("").sort();
 
-    if(str1.shift() === str2.shift()) {
-        str1 = str1.join(""), str2 = str2.join("");
-        return anagram(str1, str2);
-    }
-    return false;
+    str1 = str1.split("").sort().join("");
+    str2 = str2.split("").sort().join("");
+
+    return str1 === str2 ? true : false;
 }
 
-console.log(anagram("listed", "silent"))
+console.log(anagram("listem", "silent"))
