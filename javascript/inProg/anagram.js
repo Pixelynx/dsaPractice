@@ -5,25 +5,26 @@ const anagram = (str1, str2) => {
     let letters = {}
 
     for (let letter of str1) {
-        if (letters[letter]) {
-            console.log("IF: ", str1[letter])
-            letters[letter]++
+        console.log(letter)
+        if (!letters[letter]) {
+            console.log("IF: ", letters)
+            letters[letter] = 1
         }
         else {
-            console.log("ELIF: ", str1[letter])
+            console.log("ELIF: ", letters)
             letters[letter]++
         }
     }
 
-    for (let i = 0; i < str2.length; i++) {
-        if (letters[str2[i]]) {
-            letters[str2[i]] = letters[str2[i]] - 1
-        }
-        else {
-            return false
-        }
-    }
-    return true
+    // for (let i = 0; i < str2.length; i++) {
+    //     if (letters[str2[i]]) {
+    //         letters[str2[i]] = letters[str2[i]] - 1
+    //     }
+    //     else {
+    //         return false
+    //     }
+    // }
+    // return true
 
 }
-console.log(anagram("listen", "silent"))
+console.log(anagram("listens", "silent"))
