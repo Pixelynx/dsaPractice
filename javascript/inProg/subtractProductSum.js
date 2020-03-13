@@ -9,12 +9,15 @@
 // Result = 24 - 9 = 15
 
 const subtractProductAndSum = (n) => {
-    let prod, sum;
+    let prod = 1, sum = 0;
     n = n.toString().split("");
-    for(let i = 0; i < n.length; i++) {
+    n = n.map(num => num = Number(num));
 
+    for(let i = 0; i < n.length; i++) {
+        prod = prod * n[i];
+        sum = sum + n[i];
     }
-    return n
+    return Math.max(prod-sum);
 };
 
 console.log(subtractProductAndSum(234));
