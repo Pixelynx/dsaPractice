@@ -75,10 +75,6 @@ const splitPairs = (arr) => {
     }, new Array());
 };
 
-const searchCategories = (arr) => {
-
-};
-
 const categorySuggestions = (categories, projects, k) => {
     // split category pairs and order by relevance
     categories = splitPairs(categories).sort((a, b) => b[2]-a[2]);
@@ -88,21 +84,20 @@ const categorySuggestions = (categories, projects, k) => {
     let categoryGraph = new CategoryGraph();
     let graphCats = createVerticies(categoryGraph, justCategories);
     for(pair of justCategories) categoryGraph.addEdge(pair[0], (pair[1]));
-// console.log(graphCats)
+
+    // while projects arr has length, push project into search array
     let kProjects = new Array();
     while(projects.length) {
         let currentProject = projects.shift();
         kProjects.push(new Array(currentProject));
     };
-    for(let i = 0; i < kProjects.length; i++) {
-        let currentProject = kProjects[i].slice(0);
-        let relatedProjects = graphCats.getEdges(currentProject.toString()).slice(0, k-1)
-        console.log("KPROJECTS: ", kProjects[i])
-        console.log("RELATED: ", relatedProjects)
-        kProjects[i].concat(relatedProjects)
-    }
 
-    // console.log("RESULT: ", kProjects)
+    // search graph for current project and add relavant projects to search array
+    for(let i = 0; i < kProjects.length; i++) {
+        let currentProject = kProjects[i];
+        let relatedProjects = graphCats.getEdges(currentProject.toString()).slice(0, k-1)
+        kProjects[i].push(...relatedProjects)
+    };
     return kProjects;
 };
 
