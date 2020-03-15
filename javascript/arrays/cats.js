@@ -25,7 +25,7 @@ class CategoryGraph {
     };
 
     addEdge = (v1, v2) => {
-        console.log(v1, v2)
+        // console.log(v1, v2)
         this.edges.get(v1).push(v2);
         this.edges.get(v2).push(v1);
 
@@ -67,19 +67,29 @@ const createVerticies = (graph, arr) => {
     return graph;
 };
 
-const addEdges = (graph, arr) => {
-
+const splitPairs = (arr) => {
+    return arr = arr.reduce((pair, el) => {
+        pair.push(el.split(", "));
+        return pair;
+    }, new Array());
 };
 
 const categorySuggestions = (categories, projects, k) => {
     let categoryGraph = new CategoryGraph();
-    let justCategories = categories.map(cat => cat.split(", ").slice(0,-1));
-    
+    categories = splitPairs(categories).sort((a, b) => b[2]-a[2]);
+
+    console.log(categories)
+
+    let justCategories = categories.map(cat => cat.slice(0,-1));
+
     // create graph vertices and add their corresponding edges
     let graphCats = createVerticies(categoryGraph, justCategories);
     for(pair of justCategories) categoryGraph.addEdge(pair[0], (pair[1]));
 
-    console.log(graphCats)
+    let kProjects = new Array();
+
+
+    console.log(graphCats);
 };
 
 console.log(categorySuggestions(categories, projects, 3));
