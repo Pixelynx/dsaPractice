@@ -25,6 +25,7 @@ class CategoryGraph {
     };
 
     addEdge = (v1, v2) => {
+        console.log(v1, v2)
         this.edges.get(v1).push(v2);
         this.edges.get(v2).push(v1);
 
@@ -59,21 +60,26 @@ class CategoryGraph {
 
 const createVerticies = (graph, arr) => {
     let setArr = new Set();
-    for(let item of arr) {
-        if(!setArr.has(item)) setArr.add(item[0]).add(item[1])
-    };
+    // create set of unique elements and add them as a vertex to graph
+    for(let item of arr) setArr.add(item[0]).add(item[1]);
     for(let item of Array.from(setArr)) graph.addVertex(item);
 
     return graph;
-}
+};
+
+const addEdges = (graph, arr) => {
+
+};
 
 const categorySuggestions = (categories, projects, k) => {
-    let newGraph = new CategoryGraph();
+    let categoryGraph = new CategoryGraph();
     let justCategories = categories.map(cat => cat.split(", ").slice(0,-1));
     
-    let uniqueCats = createVerticies(newGraph, justCategories)
+    // create graph vertices and add their corresponding edges
+    let graphCats = createVerticies(categoryGraph, justCategories);
+    for(pair of justCategories) categoryGraph.addEdge(pair[0], (pair[1]));
 
-    console.log(uniqueCats)
+    console.log(graphCats)
 };
 
 console.log(categorySuggestions(categories, projects, 3));
