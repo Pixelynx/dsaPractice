@@ -14,13 +14,14 @@ let projects = [
 ];
 
 class CategoryGraph {
-    constructor(numOfVerticies) {
+    constructor(numOfVerticies = 0) {
         this.numOfVerticies = numOfVerticies;
         this.edges = new Map();
-    }
+    };
 
     addVertex = (val) => {
         this.edges.set(val, []);
+        this.numOfVerticies++;
     };
 
     addEdge = (v1, v2) => {
@@ -41,7 +42,7 @@ class CategoryGraph {
                 disp += val + " " 
             };
 
-            return `${keyVal} => disp`;
+            return `${keyVal} => ${disp}`;
         };
     }
 }
