@@ -8,8 +8,24 @@ const bestPros = (pros, k) => {
     }, []);
 
     let max_distance = Math.max(...distanceArr);
+    let scores = {};    
+    let kPros = new Array();
     
-    return max_distance;
+    for(let pro = 0; pro < pros.length; pro++) {
+        let distance = 0, rating = 1;
+        let PMS = (max_distance - pros[pro][distance]) * pros[pro][rating];
+        scores[pro] = PMS
+    }
+
+    // for(idx in scores) {
+        console.log(Object.values(scores))
+    // }
+
+    // equation => (max_distance - distance) * rating
+
+
+
+    return scores;
 }
 
 console.log(bestPros(pros, 2));
