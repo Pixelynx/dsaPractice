@@ -20,16 +20,18 @@ class CategoryGraph {
     };
 
     addVertex = (val) => {
-        this.edges.set(val, []);
+        this.edges.set(val, new Array());
         this.numOfVerticies++;
     };
 
     addEdge = (v1, v2) => {
-        // console.log(v1, v2)
         this.edges.get(v1).push(v2);
         this.edges.get(v2).push(v1);
-
         return this;
+    };
+
+    getEdges = (startingNode) => {
+        return this.edges.get(startingNode);
     };
 
     print = () => {
@@ -63,7 +65,6 @@ const createVerticies = (graph, arr) => {
     // create set of unique elements and add them as a vertex to graph
     for(let item of arr) setArr.add(item[0]).add(item[1]);
     for(let item of Array.from(setArr)) graph.addVertex(item);
-
     return graph;
 };
 
@@ -74,22 +75,35 @@ const splitPairs = (arr) => {
     }, new Array());
 };
 
+const searchCategories = (arr) => {
+
+};
+
 const categorySuggestions = (categories, projects, k) => {
-    let categoryGraph = new CategoryGraph();
+    // split category pairs and order by relevance
     categories = splitPairs(categories).sort((a, b) => b[2]-a[2]);
-
-    console.log(categories)
-
     let justCategories = categories.map(cat => cat.slice(0,-1));
 
     // create graph vertices and add their corresponding edges
+    let categoryGraph = new CategoryGraph();
     let graphCats = createVerticies(categoryGraph, justCategories);
     for(pair of justCategories) categoryGraph.addEdge(pair[0], (pair[1]));
-
+// console.log(graphCats)
     let kProjects = new Array();
+    while(projects.length) {
+        let currentProject = projects.shift();
+        kProjects.push(new Array(currentProject));
+    };
+    for(let i = 0; i < kProjects.length; i++) {
+        let currentProject = kProjects[i].slice(0);
+        let relatedProjects = graphCats.getEdges(currentProject.toString()).slice(0, k-1)
+        console.log("KPROJECTS: ", kProjects[i])
+        console.log("RELATED: ", relatedProjects)
+        kProjects[i].concat(relatedProjects)
+    }
 
-
-    console.log(graphCats);
+    // console.log("RESULT: ", kProjects)
+    return kProjects;
 };
 
 console.log(categorySuggestions(categories, projects, 3));
