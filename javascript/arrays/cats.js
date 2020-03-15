@@ -47,23 +47,36 @@ class CategoryGraph {
     }
 }
 
-let verticies = ["House Painting", "Interior Painting", "Handyman", "Massage Therapy", "House Cleaning", "Furniture Assembly", "Plumbing Drain Repair", "Junk Removal"];
+// let verticies = ["House Painting", "Interior Painting", "Handyman", "Massage Therapy", "House Cleaning", "Furniture Assembly", "Plumbing Drain Repair", "Junk Removal"];
 
-let newGraph = new CategoryGraph();
+// let newGraph = new CategoryGraph();
 
-for(let i = 0; i < verticies.length; i++) {
-    newGraph.addVertex(verticies[i]);
+// for(let i = 0; i < verticies.length; i++) {
+//     newGraph.addVertex(verticies[i]);
+// }
+// newGraph.addEdge("House Painting", "Interior Painting").addEdge("Handyman", "Massage Therapy").addEdge("House Painting", "House Cleaning").addEdge("Furniture Assembly", "Handyman").addEdge("Furniture Assembly", "Massage Therapy").addEdge("Plumbing Drain Repair", "Junk Removal");
+// newGraph.print()
+
+const createVerticies = (graph, arr) => {
+    let setArr = new Set();
+    for(let item of arr) {
+        if(!setArr.has(item)) setArr.add(item[0]).add(item[1])
+    };
+    for(let item of Array.from(setArr)) graph.addVertex(item);
+
+    return graph;
 }
-newGraph.addEdge("House Painting", "Interior Painting").addEdge("Handyman", "Massage Therapy").addEdge("House Painting", "House Cleaning").addEdge("Furniture Assembly", "Handyman").addEdge("Furniture Assembly", "Massage Therapy").addEdge("Plumbing Drain Repair", "Junk Removal");
-newGraph.print()
-
-console.log(newGraph)
 
 const categorySuggestions = (categories, projects, k) => {
+    let newGraph = new CategoryGraph();
+    let justCategories = categories.map(cat => cat.split(", ").slice(0,-1));
+    
+    let uniqueCats = createVerticies(newGraph, justCategories)
 
+    console.log(uniqueCats)
 };
 
-// console.log(categorySuggestions, projects, 3);
+console.log(categorySuggestions(categories, projects, 3));
 // output => [
 //     ["House Painting", "Interior Painting", "House Cleaning"],
 //     ["Handyman", "House Painting", "Interior Painting"]
