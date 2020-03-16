@@ -5,17 +5,16 @@ let pros = [[5, 4], [4, 3], [6, 5], [3, 5]];
 function calcMaxDistance(arr) {
     let distanceArr = arr.reduce((distances, pro) => {
         distances.push(pro[0])
-        // return distances.sort((a, b) => a-b).slice(-1);
+        return distances.sort((a, b) => a-b).slice(-1);
     }, new Array());
-    console.log(distanceArr)
     return Math.max(distanceArr);
 };
 
 function hashProsPMS(pros, dist) {
     // equation => (max_distance - distance) * rating
     let map = new Map();
-    for(let pro of pros) {
-        let distance = pro[0], rating = pro[1];
+    for(let pro = 0; pro < pros.length; pro++) {
+        let distance = pros[pro][0], rating = pros[pro][1];
         let PMS = (dist - distance) * rating;
         map.set(pro, PMS);
     };
@@ -35,21 +34,16 @@ function bestPros(pros, k) {
     let max_distance = calcMaxDistance(pros);
     let proMap = hashProsPMS(pros, max_distance);
     let PMSarr = new Array();
-    let kPros = new Set();
     for(let pro of Array.from(proMap)) {
         PMSarr.push(...pro.slice(-1));
     };
-    console.log(PMSarr)
-
+    PMSarr = PMSarr.sort((a, b) => b-a).slice(0, k)
+    
     let proObj = mapProScores(PMSarr);
+    let kPros = new Set();
+    
+    console.log(kPros)
 
-    for(let rating of PMSarr) {
-        for(let idx in proObj) {
-            if(!kPros.has(proObj[idx]) && proObj[idx] === rating) {
-                kPros.add(parseInt(idx))
-            };
-        }
-    };
     
     return Array.from(kPros);
 };

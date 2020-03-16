@@ -34,8 +34,8 @@ for(let rating of PMSarr) {
     for(let idx in scores) {
         if(!kPros.has(scores[idx]) && scores[idx] === rating) {
             kPros.add(parseInt(idx))
-        }
-    }
+        };
+    };
 };
 
 return Array.from(kPros);
