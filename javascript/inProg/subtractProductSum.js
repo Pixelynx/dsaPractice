@@ -30,8 +30,14 @@
 //     return Math.max(prod-sum);
 // }
 
-const subtractProductAndSumRecurse = (n) => {
+const prodSumRecursion = (product, sum) => {
+    if(!n.length) return;
+}
 
+const subtractProductAndSum = (n) => {
+    let sum = 0, prod = 0;
+
+    
 };
 
 console.log(subtractProductAndSum(234));
