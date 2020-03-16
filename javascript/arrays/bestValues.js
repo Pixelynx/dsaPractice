@@ -8,20 +8,29 @@ const calculateScore = (arr, obj, maxDistance) => {
         let PMS = (maxDistance - arr[pro][distance]) * arr[pro][rating];
         (obj[pro]) = PMS
     };
-}
+};
 
-const bestPros = (pros, k) => {
-    // new array of all the distances
-    let max_distance = pros.reduce((distances, pro) => {
+const addBestPros = (rating, obj, set) => {
+    let pRating = Object.values(obj).indexOf(rating);
+    if(pRating && !set.has(pRating)) {
+        set.add(parseInt(pRating))
+    };
+};
+
+const calcMaxDistance = (arr) => {
+    return arr.reduce((distances, pro) => {
         distances.push(pro[0])
         return distances.sort((a, b) => a-b).slice(-1);
     }, new Array());
-    
+};
+
+const bestPros = (pros, k) => {
+    // new array of all the distances
+    let max_distance = calcMaxDistance(pros);
     let scores = new Object();
     calculateScore(pros, scores, max_distance);
     
     let PMSarr = Object.values(scores).sort((a,b) => b-a).slice(0, k);
-    
     let kPros = new Set();
     // for(let rating of PMSarr) {
     //     for(let idx in scores) {
@@ -32,12 +41,10 @@ const bestPros = (pros, k) => {
     // }
 
     for(let rating of PMSarr) {
-        let pRating = Object.values(scores).indexOf(rating);
-        if(pRating && !kPros.has(pRating)) {
-            kPros.add(parseInt(pRating))
-        }
+        addBestPros(rating, scores, kPros);
     }
     return Array.from((kPros));
-}
+};
+
 
 console.log(bestPros(pros, 2));
