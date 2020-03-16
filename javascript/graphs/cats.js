@@ -114,3 +114,18 @@ console.log(categorySuggestions(categories, projects, 3));
 // Handyman | Handyman => 1.0
 // Handyman | House Painting => 0.5
 // Handyman | Interior Painting => 0.0
+
+// The first expected output for the House Painting project seems just fine. However it looks like there is an error when it comes to the Handyman project. Based off the info that is given, I believe the proper output should show ["Handyman", "Funiture Assembly", "House Painting"]. This is because "Funiture Assembly has a relevance rating of 0.8 and "House Painting" has a relevance of 0.5 as per the input that is given, as opposed to the "expected" output which is given of "House Paiting" which is at 0.5 and "Interior Painting" at 0.0:
+
+//     "House Painting, Interior Painting, 0.9"
+//     "Handyman, Massage Therapy, 0.1"
+//     "Handyman, House Painting, 0.5"
+//     "House Painting, House Cleaning, 0.6"
+//     "Furniture Assembly, Handyman, 0.8"
+//     "Furniture Assembly, Massage Therapy, 0.1"
+//     "Plumbing Drain Repair, Junk Removal, 0.3"
+
+//  Assuming the first test case is the example problem, I can't help worry if there are possibly other test cases that may have a couple bugs.
+
+
+
