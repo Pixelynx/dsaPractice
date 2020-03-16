@@ -20,10 +20,12 @@ function findMaxDistanceAndMap(pros) {
       const [distance] = pro;
       if(distance > maxDistance) maxDistance = distance;
     };
+    console.log(distanceMap)
     return [maxDistance, distanceMap];
    };
 
 function bestPros(pros, k) {
+    k = k < 0 ? 0 : k;
   const [maxDistance, proMap] = findMaxDistanceAndMap(pros);
   const sortedPros = proSort(pros, maxDistance);
   const sliced = sortedPros.slice(0, k);
