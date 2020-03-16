@@ -60,7 +60,7 @@ class CategoryGraph {
 // newGraph.addEdge("House Painting", "Interior Painting").addEdge("Handyman", "Massage Therapy").addEdge("House Painting", "House Cleaning").addEdge("Furniture Assembly", "Handyman").addEdge("Furniture Assembly", "Massage Therapy").addEdge("Plumbing Drain Repair", "Junk Removal");
 // newGraph.print()
 
-const createVerticies = (graph, arr) => {
+function createVerticies(graph, arr) {
     let setArr = new Set();
     // create set of unique elements and add them as a vertex to graph
     for(let item of arr) setArr.add(item[0]).add(item[1]);
@@ -68,14 +68,14 @@ const createVerticies = (graph, arr) => {
     return graph;
 };
 
-const splitPairs = (arr) => {
+function splitPairs(arr) {
     return arr = arr.reduce((pair, el) => {
         pair.push(el.split(", "));
         return pair;
     }, new Array());
 };
 
-const categorySuggestions = (categories, projects, k) => {
+function categorySuggestions(categories, projects, k) {
     // split category pairs and order by relevance
     categories = splitPairs(categories).sort((a, b) => b[2]-a[2]);
     let justCategories = categories.map(cat => cat.slice(0,-1));
@@ -96,7 +96,7 @@ const categorySuggestions = (categories, projects, k) => {
     for(let i = 0; i < kProjects.length; i++) {
         let currentProject = kProjects[i];
         let relatedProjects = graphCats.getEdges(currentProject.toString()).slice(0, k-1)
-        kProjects[i].push(...relatedProjects)
+        kProjects[i].push(...relatedProjects);
     };
     return kProjects;
 };
@@ -125,7 +125,7 @@ console.log(categorySuggestions(categories, projects, 3));
 //     "Furniture Assembly, Massage Therapy, 0.1"
 //     "Plumbing Drain Repair, Junk Removal, 0.3"
 
-//  Assuming the first test case is the example problem, I can't help worry if there are possibly other test cases that may have a couple bugs.
+//  This example problem is test case 0, and there seems to be a similar bug with test case one. I can't help worry that there are other test cases with the same bug and that makes it difficult to know what can be improved upon in the code.
 
 
 
