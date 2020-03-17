@@ -1,6 +1,6 @@
-let pros = [[5, 4], [4, 3], [6, 5], [3, 5]];
-// => [15, 6, 0, 15]
-// => [0, 3, 1]
+let pros = [[5, 4], [6, 5], [3, 5], [4, 3],];
+// => [4, 0, 15, 6]
+// => [2, 3, 0, 1]
 
 function reduceToDistances(arr) {
     return arr.reduce((distances, pro) => {
@@ -29,10 +29,10 @@ let scores = calculatePMS(pros, max_distance);
 let kPros = new Set();
 
 let PMSarr = Object.values(scores).sort((a,b) => b-a).slice(0, k);
-
+console.log(PMSarr)
 for(let rating of PMSarr) {
     for(let idx in scores) {
-        if(!kPros.has(scores[idx]) && scores[idx] === rating) {
+        if(scores[idx] === rating) {
             kPros.add(parseInt(idx))
         };
     };
@@ -42,7 +42,7 @@ return Array.from(kPros);
 };
 
 
-console.log(bestPros(pros, 2));
+console.log(bestPros(pros, 6));
 
 
 
