@@ -82,7 +82,7 @@ function categorySuggestions(categories, projects, k) {
 
     // create graph vertices and add their corresponding edges
     let categoryGraph = new CategoryGraph();
-    let graphCats = createVerticies(categoryGraph, justCategories);
+    createVerticies(categoryGraph, justCategories);
     for(pair of justCategories) categoryGraph.addEdge(pair[0], (pair[1]));
 
     // while projects arr has length, push project into search array
@@ -95,7 +95,7 @@ function categorySuggestions(categories, projects, k) {
     // search graph for current project and add relavant projects to search array
     for(let i = 0; i < kProjects.length; i++) {
         let currentProject = kProjects[i];
-        let relatedProjects = graphCats.getEdges(currentProject.toString()).slice(0, k-1)
+        let relatedProjects = categoryGraph.getEdges(currentProject.toString()).slice(0, k-1)
         kProjects[i].push(...relatedProjects);
     };
     return kProjects;
