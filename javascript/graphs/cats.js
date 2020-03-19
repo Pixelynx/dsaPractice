@@ -68,7 +68,6 @@ function splitPairs(arr) {
 function categorySuggestions(categories, projects, k) {
     // split category pairs and order by relevance
     categories = splitPairs(categories).sort((a, b) => b[2]-a[2]);
-    console.log("CATEGORIES: ", categories)
     let justCategories = categories.map(cat => cat.slice(0,-1));
 
     // create graph vertices and add their corresponding edges
@@ -78,18 +77,26 @@ function categorySuggestions(categories, projects, k) {
 
     // while projects arr has length, push project into search array
     let kProjects = new Array();
-    while(projects.length) {
+    for(let i = 0; projects.length; i++) {
         let currentProject = projects.shift();
-        kProjects.push(new Array(currentProject));
+        let relatedProjects = categoryGraph.getEdges(currentProject.toString()).slice(0, k-1)
+        if(!kProjects.values().length) {
+            kProjects.push(new Array(currentProject));
+            kProjects[i].push(...relatedProjects);
+        }
+        else {
+            
+        }
     };
 
     // search graph for current project and add relavant projects to search array
-    for(let i = 0; i < kProjects.length; i++) {
-        let currentProject = kProjects[i];
-        let relatedProjects = categoryGraph.getEdges(currentProject.toString()).slice(0, k-1)
-        kProjects[i].push(...relatedProjects);
-    };
-    console.log(categoryGraph)
+    // for(let i = 0; i < kProjects.length; i++) {
+    //     let currentProject = kProjects[i];
+    //     let relatedProjects = categoryGraph.getEdges(currentProject.toString()).slice(0, k-1)
+        
+    //     kProjects[i].push(...relatedProjects);
+    // };
+    // console.log(categoryGraph)
     return kProjects;
 };
 
