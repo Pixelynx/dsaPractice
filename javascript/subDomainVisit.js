@@ -25,8 +25,24 @@ let domains1 = ["9001 discuss.leetcode.com"];
 let domains2 = ["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"];
 // output => ["901 mail.com","50 yahoo.com","900 google.mail.com","5 wiki.org","5 org","1 intel.mail.com","951 com"]
 
+const createDomainMap = (arr) => {
+    let newMap = new Map();
+    let newArr = arr.map(item => item.split(" "));
+
+    for(let item of newArr) {
+        let domainSearch = parseInt(item.shift());
+        newMap.set(domainSearch, new Array());
+        newMap.get(domainSearch).push(item.shift());
+    }
+    return newMap;
+}
+
 const subdomainVisits = (cpdomains) => {
-    
+    let cpdomainMap = createDomainMap(cpdomains);
+
+
+    console.log(cpdomainMap)
+
 };
 
-console.log(subdomainVisits(domains1));
+console.log(subdomainVisits(domains2));
