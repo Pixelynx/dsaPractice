@@ -40,8 +40,8 @@ const isolateSubDomains = (arr) => {
     let removePeriods = new Array();
 
     for(let i = 0; i < arr.length; i++) {
-            arr[i] = arr[i].toString().split(".").slice(1)
-            removePeriods.push(arr[i])
+        arr[i] = arr[i].slice(1)
+        removePeriods.push(arr[i])
     }
     return removePeriods;
 }
@@ -51,11 +51,42 @@ const subdomainVisits = (cpdomains) => {
     let removePeriods = isolateSubDomains(Array.from(cpdomainMap.values()));
 
     for(let i = 0; i < removePeriods.length; i++) {
-        console.log(removePeriods[i])
+        let domains = cpdomainMap.values();
+
     }
 
-    console.log(cpdomainMap)
+
+    console.log(Array.from(cpdomainMap.values()))
 
 };
 
 console.log(subdomainVisits(domains2));
+
+// var subdomainVisits = function(cpdomains) {
+//     const map = new Map();
+    
+//     function process(number, dom){     
+//         map.set(dom, (map.get(dom) || 0) + number);
+//         const firstDotIndex = dom.indexOf('.');
+        
+//         if(firstDotIndex > -1){
+//             const newDomain = dom.slice(firstDotIndex + 1);     
+//             process(number, newDomain);
+//         }
+//     }
+    
+//     for(let domain of cpdomains){
+//         const [number, dom] = domain.split(' ');
+//         process(parseInt(number, 10), dom);
+//     }
+    
+//     const result = [];
+    
+//     for(let key of map.keys()){
+//         result.push(`${map.get(key)} ${key}`);
+//     }
+    
+//     return result;
+    
+    
+// };
