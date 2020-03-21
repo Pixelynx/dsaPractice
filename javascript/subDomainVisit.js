@@ -37,11 +37,23 @@ const createDomainMap = (arr) => {
     return newMap;
 }
 
+const isolateSubDomains = (arr) => {
+    let removePeriods = new Array();
+
+    for(let i = 0; i < arr.length; i++) {
+        if(arr[i].length) {
+            arr[i] = arr[i].toString().split(".").slice(1).join(".")
+        }
+        return arr[i];
+    }
+}
+
 const subdomainVisits = (cpdomains) => {
     let cpdomainMap = createDomainMap(cpdomains);
+    let removePeriods = isolateSubDomains(Array.from(cpdomainMap.values()));
 
 
-    console.log(cpdomainMap)
+    console.log(removePeriods)
 
 };
 
