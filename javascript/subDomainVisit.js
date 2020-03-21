@@ -31,8 +31,7 @@ const createDomainMap = (arr) => {
 
     for(let item of newArr) {
         let domainSearch = parseInt(item.shift());
-        newMap.set(domainSearch, new Array());
-        newMap.get(domainSearch).push(item.shift());
+        newMap.set(domainSearch, item.toString().split("."));
     }
     return newMap;
 }
@@ -41,19 +40,21 @@ const isolateSubDomains = (arr) => {
     let removePeriods = new Array();
 
     for(let i = 0; i < arr.length; i++) {
-        if(arr[i].length) {
-            arr[i] = arr[i].toString().split(".").slice(1).join(".")
-        }
-        return arr[i];
+            arr[i] = arr[i].toString().split(".").slice(1)
+            removePeriods.push(arr[i])
     }
+    return removePeriods;
 }
 
 const subdomainVisits = (cpdomains) => {
     let cpdomainMap = createDomainMap(cpdomains);
     let removePeriods = isolateSubDomains(Array.from(cpdomainMap.values()));
 
+    for(let i = 0; i < removePeriods.length; i++) {
+        console.log(removePeriods[i])
+    }
 
-    console.log(removePeriods)
+    console.log(cpdomainMap)
 
 };
 
