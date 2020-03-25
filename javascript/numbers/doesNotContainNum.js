@@ -7,9 +7,7 @@ const intRange = (n1, n2) => {
 
         let currNum = n.slice(0, 1);
         if (parseFloat(currNum) === 5) return false;
-        else {
-            return checkNumContains5(n.slice(1).join(""));
-        };
+        else return checkNumContains5(n.slice(1).join(""));
     };
 
     for (let num = n1; num < n2; num++) {
