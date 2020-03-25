@@ -1,5 +1,6 @@
-let log = console.log;
 const intRange = (n1, n2) => {
+    let count = 0;
+
     function checkNumContains5(n) {
         n = n.toString().split("");
         if (!n.length) return true;
@@ -12,9 +13,10 @@ const intRange = (n1, n2) => {
     };
 
     for (let num = n1; num < n2; num++) {
-        if (num !== 5 && checkNumContains5(num) === true) log(num);
+        if (num !== 5 && checkNumContains5(num) === true) count++;
     };
 
+    return count;
 };
 
 console.log(intRange(2, 566));
