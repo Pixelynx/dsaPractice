@@ -1,7 +1,3 @@
-// Write a function that takes an integer and an unsorted array of numbers
-// and returns true if there's any pair of numbers in that array that can be
-// summed up to the input integer.
-
 const pairAddsUp = (arr, target) => {
     arr = arr.sort((a, b) =>  a-b);
 
