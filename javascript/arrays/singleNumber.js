@@ -1,7 +1,8 @@
 let singleNumber = function(nums) {
-    
+    let newSet = new Set();
+    for(let num of nums) !newSet.has(num) ? newSet.add(num) : newSet.delete(num);
+    return parseInt(Array.from(newSet));
 };
-
 
 let test1 = [2, 2, 1];
 let test2 = [4, 1, 2, 1, 2];
