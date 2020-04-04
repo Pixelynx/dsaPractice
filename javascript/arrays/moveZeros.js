@@ -1,44 +1,22 @@
 let moveZeroes = function(nums) {
-    let pointerA = 0, pointerB;
+    let pointerA = 0, pointerB = 1;
 
-    while(pointerA !== nums.length) {
-        let temp;
-        console.log(pointerA, pointerB)
-        if(nums[pointerA] === 0) {
-            pointerB = pointerA;
-        } else if(nums[pointerA] !== 0) {
-            temp = nums[pointerB];
-            console.log('temp: ', temp)
-            console.log('nums[A]: ', nums[pointerA])
-            console.log('nums[B]: ', nums[pointerB])
-            
-            nums[pointerB] = nums[pointerA];
-            nums[pointerA] = temp;
-            console.log('new nums[A]: ', nums[pointerA])
-            console.log('new nums[B]: ', nums[pointerB])
-            console.log('END CYCLE: ', nums)
+        if(nums.length === 2 && (nums[pointerA] === 0 && nums[pointerB] !== 0)) [nums[pointerA], nums[pointerB]] = [nums[pointerB], nums[pointerA]];
+      
+        if(nums.length > 2) {
+            while((pointerA !== pointerB) && (pointerA && pointerB) !== null) {
+                if(nums[pointerA] === 0 && nums[pointerB] !== 0) pointerB = pointerA, pointerA++;
+                else if((nums[pointerA] !== 0 && nums[pointerB] === 0)) {
+                    [nums[pointerA], nums[pointerB]] = [nums[pointerB], nums[pointerA]];
+                    pointerA++, pointerB++;
+                } else if((nums[pointerA] && nums[pointerB]) === 0) pointerA++;
+            }
         }
-        pointerA++;
-    }
-    return nums
+    return nums;
 };
 
-// let moveZeroes = function(nums) {
-//     let pointerA = 0, pointerB;
-
-//     while(pointerA !== nums.length-1) {
-//         let temp;
-//         if(nums[pointerA] === 0) pointerB = pointerA; 
-//         else if(nums[pointerA] !== 0 && nums[pointerB] === 0) {
-//             temp = nums[pointerA];
-//             nums[pointerB] = nums[pointerA];
-//             nums[pointerA] = temp;
-//         }
-//         pointerA++;
-//     }
-// };
-
-let arr = [0,1,0,3,12];
+let arr = [1,0,0];
+// [1, 0]
 
 console.log("OUTPUT: ", moveZeroes(arr));
 console.log("EXPECTED OUTPUT: [1,3,12,0,0]")
