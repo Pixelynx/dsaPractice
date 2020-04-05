@@ -7,16 +7,16 @@
 // Explanation: [4,-1,2,1] has the largest sum = 6.
 
 let maxSubArray = function(nums) {
-    let maxSum = nums[0];
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i - 1] > 0) {
-            console.log(nums[i], nums[i - 1])
-            nums[i] += nums[i - 1];
+    let max = nums[0];
+    for (let curr = 1; curr < nums.length; curr++) {
+        // if previous number is greater than 0; add it to current number -- nums[curr]
+        if (nums[curr - 1] > 0) {
+            nums[curr] += nums[curr - 1];
         }
-        console.log('MAX SUM: ', maxSum)
-        maxSum = Math.max(nums[i], maxSum);
+        // if nums[curr] is greater than max redefine max; else max = max
+        max = Math.max(nums[curr], max);
     }
-    return maxSum;
+    return max;
 };
 
 let arr = [-2,1,-3,4,-1,2,1,-5,4];
