@@ -1,6 +1,6 @@
 class ListNode {
-    constructor(value) {
-        this.value = value;
+    constructor(val) {
+        this.val = val;
         this.next = null;
     }
 };
@@ -27,23 +27,33 @@ class LinkedList {
 };
 
 let middleNode = function(head) {
-    
+    let fast = head;
+    let slow = head; 
+    while(fast.next && fast.next.next) {
+        fast = fast.next.next;
+        slow = slow.next
+    }
+    return fast.next ? slow.next : slow;
+
 };
 
-let newList = new LinkedList()
-newList.addNode(1).addNode(2).addNode(3).addNode(4).addNode(5);
+let list1 = [1,2,3,4,5]
+console.log("OUTPUT: ", middleNode(list1));
+console.log("EXPECTED OUTPUT: 3");
+
+// let newList = new LinkedList();
+// newList.addNode(1).addNode(2).addNode(3).addNode(4).addNode(5);
 // newList.addNode(1).addNode(2).addNode(3).addNode(4).addNode(5).addNode(6);
 
-console.log(newList)
 
 // let list1 = [1,2,3,4,5];
-// console.log("OUTPUT: ", middleNode(list1));
+// console.log("OUTPUT: ", middleNode(newList));
 // console.log("EXPECTED OUTPUT: 3");
 // // The returned node has value 3.  (The judge's serialization of this node is [3,4,5]).
 // // Note that we returned a ListNode object ans, such that:
 // // ans.val = 3, ans.next.val = 4, ans.next.next.val = 5, and ans.next.next.next = NULL.
 
 // let list2 = [1,2,3,4,5,6];
-// console.log("OUTPUT: ", middleNode(list2));
+// console.log("OUTPUT: ", middleNode(newList));
 // console.log("EXPECTED OUTPUT: 4");
 // // Since the list has two middle nodes with values 3 and 4, we return the second one.
