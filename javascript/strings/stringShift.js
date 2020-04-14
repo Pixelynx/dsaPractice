@@ -25,21 +25,25 @@ let stringShift = function(s, shift) {
     let shifting = 0;
 
     for(let i = 0; i < shift.length; i++) {
-        shift[i][0] === 0 ? shifting = shifting - shift[i][1] : shifting = shifting + shift[i][1]
-        console.log(shifting)
+        shift[i][0] === 0 ? shifting = (shifting - shift[i][1])%s.length : shifting = (shifting + shift[i][1])%s.length
     }
-    
     return shifting !== 0 ? shiftString(s, shifting) : s;
 };
 
 let str1 = "abc", shift1 = [[0,1],[1,2]];
 let str2 = "abcdefg", shift2 = [[1,1],[1,1],[0,2],[1,3]];
+let str3 = "xqgwkiqpif", shift3 = [[1,4],[0,7],[0,8],[0,7],[0,6],[1,3],[0,1],[1,7],[0,5],[0,6]];
 
-console.log("MATCH => ", stringShift(str1, shift1) === "cab");
-console.log("OUTPUT => ", stringShift(str1, shift1));
-console.log("EXPECTED: cab");
-console.log("==============");
-console.log("==============");
-console.log("MATCH => ", stringShift(str2, shift2) === "efgabcd");
-console.log("OUTPUT => ", stringShift(str2, shift2));
-console.log("EXPECTED: efgabcd");
+// console.log("MATCH => ", stringShift(str1, shift1) === "cab");
+// console.log("OUTPUT => ", stringShift(str1, shift1));
+// console.log("EXPECTED: cab");
+// console.log("==============");
+// console.log("==============");
+// console.log("MATCH => ", stringShift(str2, shift2) === "efgabcd");
+// console.log("OUTPUT => ", stringShift(str2, shift2));
+// console.log("EXPECTED: efgabcd");
+// console.log("==============");
+// console.log("==============");
+console.log("MATCH => ", stringShift(str3, shift3) === "qpifxqgwki");
+console.log("OUTPUT => ", stringShift(str3, shift3));
+console.log("EXPECTED: qpifxqgwki");
