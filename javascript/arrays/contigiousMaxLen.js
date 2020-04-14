@@ -5,16 +5,19 @@ let findMaxLength = function(nums) {
     let maxLength = 0;
     let currentLen = 0;
     
-    while(count <= nums.length && maxLength < nums.length) {
-        let start = 0; end = nums.length-1;
+    for(let start = 0, end = nums.length-1; ((start && maxLength) <= nums.length) && start < end;) {
+        // let start = 0; end = nums.length-1;
         if(nums[start] === nums[end]) {
+            console.log("IF: ", nums)
             nums = nums.slice(start+1);
             start = 0;
             end = nums.length-1;
             currentLen = 0;
         } else {
             start++; end--;
-            currentLen = nums.length > 2 ? currentLen+=2 : currentLen+=1;
+            currentLen = nums.length >= 2 ? currentLen+=2 : currentLen+=1;
+            console.log("ELSE: ", nums)
+            console.log("ELSE: ", currentLen)
         }
         count++;
         maxLength = Math.max(currentLen, maxLength);
@@ -22,7 +25,7 @@ let findMaxLength = function(nums) {
     return maxLength;
 };
 
-let test1 = [0,1];
+let test1 = [0,1,1];
 console.log("OUTPUT: ", findMaxLength(test1));
 console.log("EXPECTED OUTPUT: 2");
 // Explanation: [0, 1] is the longest contiguous subarray with equal number of 0 and 1.
