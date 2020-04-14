@@ -21,24 +21,41 @@
 //     return maxLength;
 // };
 
+// let findMaxLength = function(nums) {
+//     let obj = new Object();
+//     let count = 0;
+//     let currentLen = 0;
+//     let maxLength = 0;
+
+//     while(count < nums.length-1) {
+//         for(let start = count; start <= nums.length-1; start++) {
+//             !obj[nums[start]] ? obj[nums[start]] = 1 : obj[nums[start]]++;
+//             if(obj['0'] === obj['1']) currentLen = obj['0'] + obj['1'];
+//         }
+//         obj = new Object();
+//         maxLength = Math.max(currentLen, maxLength);
+//         count++
+//     };
+
+//     return maxLength;
+// };
+
 let findMaxLength = function(nums) {
-    let obj = new Object();
-    let count = 0;
-    let currentLen = 0;
-    let maxLength = 0;
+    let maxLength = 0, count = 0; 
+    let seenIdx = new Object();
 
-    while(count < nums.length-1) {
-        for(let start = count; start <= nums.length-1; start++) {
-            !obj[nums[start]] ? obj[nums[start]] = 1 : obj[nums[start]]++;
-            if(obj['0'] === obj['1']) currentLen = obj['0'] + obj['1'];
+    for(let i = 0; i < nums.length; i++) {
+        nums[i] ? count++ : count--;
+        if(count === 0) maxLength = i + 1; 
+        if(seenIdx[count] !== undefined) {
+            maxLength = Math.max(maxLength, i - seenIdx[count])
+        } else {
+            seenIdx[count] = i;
         }
-        obj = new Object();
-        maxLength = Math.max(currentLen, maxLength);
-        count++
-    };
-
+    }
     return maxLength;
 };
+
 
 let test1 = [0, 1, 1];
 console.log("OUTPUT: ", findMaxLength(test1));
