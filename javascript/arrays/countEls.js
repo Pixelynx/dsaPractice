@@ -12,6 +12,20 @@ let countElements = function(arr) {
     return count;
 };
 
+let countElements = function(arr) {
+    arr = arr.sort();
+    let count = 0;
+    let notFound = new Set();
+
+    for(let i = 0; i < arr.length; i++) {
+        if(!notFound.has(arr[i])) {
+            
+        }
+    };
+
+    return count;
+};
+
 let arr1 = [1,2,3];
 console.log("OUTCOME: ", countElements(arr1));
 console.log("EXPECTED OUTPUT: 2");
