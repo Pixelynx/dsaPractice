@@ -23,9 +23,7 @@
 
 // let findMaxLength = function(nums) {
 //     let obj = new Object();
-//     let count = 0;
-//     let currentLen = 0;
-//     let maxLength = 0;
+//     let count = 0, currentLen = 0;, maxLength = 0
 
 //     while(count < nums.length-1) {
 //         for(let start = count; start <= nums.length-1; start++) {
