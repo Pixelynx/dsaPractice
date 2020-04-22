@@ -29,3 +29,11 @@ let findSmallest = function(arr) {
     }
     return end;
 };
+
+
+let nums1 = [4,5,6,7,0,1,2];
+let target1 = 0;
+
+let nums2 = [4,5,6,7,0,1,2];
+let target2 = 3;
+console.log(search(nums1, target1));
