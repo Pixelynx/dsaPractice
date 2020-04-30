@@ -31,17 +31,17 @@ class FirstUnique {
     
 }
 
-let FirstUnique = function(nums) {
+// let FirstUnique = function(nums) {
     
-};
+// };
 
-FirstUnique.prototype.showFirstUnique = function() {
+// FirstUnique.prototype.showFirstUnique = function() {
     
-};
+// };
 
-FirstUnique.prototype.add = function(value) {
+// FirstUnique.prototype.add = function(value) {
     
-};
+// };
 
 let input1 = ["FirstUnique","showFirstUnique","add","showFirstUnique","add","showFirstUnique","add","showFirstUnique"]
 [[[2,3,5]],[],[5],[],[2],[],[3],[]];
